@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<Pane xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.tec.yatg.desktop.controllers.Matrix" fx:id="matrix"
+      prefHeight="680.0" prefWidth="680.0" style="-fx-background-color: #000;">
+    <children>
+        <Rectangle fx:id="a1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="20.0" layoutX="83.0"
+                   layoutY="63.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0"
+                   width="20.0"/>
+    </children>
+</Pane>
