@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65"
+            fx:controller="cr.tec.yatg.desktop.gui.Controller">
+    <Rectangle fx:id="a1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="20.0" layoutX="21.0"
+               layoutY="26.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0"
+               width="20.0"/>
+    <Rectangle id="b1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="20.0" layoutX="41.0" layoutY="26.0"
+               stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="20.0"/>
+    <Rectangle id="c1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="20.0" layoutX="61.0" layoutY="26.0"
+               stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="20.0"/>
+    <Rectangle id="d1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="20.0" layoutX="81.0" layoutY="26.0"
+               stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="20.0"/>
+    <Rectangle id="e1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="20.0" layoutX="101.0" layoutY="26.0"
+               stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="20.0"/>
+    <Button layoutX="200.0" layoutY="223.0" mnemonicParsing="false" onAction="#doSomething" text="Button"/>
+</AnchorPane>
