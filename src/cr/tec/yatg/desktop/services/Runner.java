@@ -1,6 +1,7 @@
 package cr.tec.yatg.desktop.services;
 
 import cr.tec.yatg.desktop.controllers.Matrix;
+import javafx.application.Platform;
 
 /**
  * Created by joseph on 22/09/16.
@@ -19,13 +20,23 @@ public class Runner implements Runnable {
 	public void run() {
 		System.out.println("Running " + threadName);
 		try {
-			for (int i = 0; i < 40; i++) {
-				System.out.println("Thread: " + threadName + ", " + i);
-				matrix.clean();
-				matrix.setEstela(1, i, 11);
+			for (int i = 1; i < 40; i++) {
+				for (int j = 1; j < 40; j++) {
+					final int fi = i;
+					final int fj = j;
+					System.out.println("(" + fi + ", " + fj);
+					Platform.runLater(() -> {
+						ControllerFacade.getInstance().getMatrix().clean();
+						ControllerFacade.getInstance().getMatrix().setEstela(1, fi, fj);
+						ControllerFacade.getInstance().getMatrix().setEstela(1, fi, fj + 1);
+						ControllerFacade.getInstance().getMatrix().setEstela(1, fi, fj + 2);
+						ControllerFacade.getInstance().getMatrix().setMoto(1, fi, fj + 3);
+					});
+					Thread.sleep(1);
+				}
 				//Dashboard.clean();
 				// Let the thread sleep for a while.
-				Thread.sleep(50);
+				//Thread.sleep(50);
 			}
 		} catch (InterruptedException e) {
 			System.out.println("Thread " + threadName + " interrupted.");

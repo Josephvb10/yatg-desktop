@@ -1,8 +1,10 @@
 package cr.tec.yatg.desktop.controllers;
 
+import cr.tec.yatg.desktop.services.ControllerFacade;
 import cr.tec.yatg.desktop.services.Runner;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 /**
@@ -33,7 +35,7 @@ public class Dashboard {
 		//setEstela(1,20,13);*/
 
 
-		matrixController.setEstela(1, 20, 11);
+		//matrixController.setEstela(1, 20, 11);
 
 		Platform.setImplicitExit(false);
 		Runner R1 = new Runner("Nombre", matrixController);
@@ -42,4 +44,8 @@ public class Dashboard {
 	}
 
 
+	public void initialize(MouseEvent mouseEvent) {
+		ControllerFacade.getInstance().setMatrix(matrixController);
+		ControllerFacade.getInstance().getMatrix().setEstela(1, 5, 6);
+	}
 }

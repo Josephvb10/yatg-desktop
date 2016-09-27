@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity" prefHeight="680.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/8.0.65"
-            fx:controller="cr.tec.yatg.desktop.controllers.Dashboard">
+            fx:controller="cr.tec.yatg.desktop.controllers.Dashboard" onMouseEntered="#initialize">
     <fx:include fx:id="matrix" source="matrix.fxml"/>
     <fx:include fx:id="dashboard" source="dashboard.fxml"/>
 
