@@ -4,6 +4,7 @@ import cr.tec.yatg.desktop.controllers.Matrix;
 import javafx.application.Platform;
 
 /**
+ * Threads del JSON
  * Created by joseph on 22/09/16.
  */
 public class Runner implements Runnable {
@@ -27,12 +28,12 @@ public class Runner implements Runnable {
 					System.out.println("(" + fi + ", " + fj);
 					Platform.runLater(() -> {
 						ControllerFacade.getInstance().getMatrix().clean();
-						ControllerFacade.getInstance().getMatrix().setEstela(1, fi, fj);
-						ControllerFacade.getInstance().getMatrix().setEstela(1, fi, fj + 1);
-						ControllerFacade.getInstance().getMatrix().setEstela(1, fi, fj + 2);
-						ControllerFacade.getInstance().getMatrix().setMoto(1, fi, fj + 3);
+						ControllerFacade.getInstance().getMatrix().setEstela(fi, fi, fj);
+						ControllerFacade.getInstance().getMatrix().setEstela(fi, fi, fj + 1);
+						ControllerFacade.getInstance().getMatrix().setEstela(fi, fi, fj + 2);
+						ControllerFacade.getInstance().getMatrix().setMoto(fi, fi, fj + 3);
 					});
-					Thread.sleep(1);
+					Thread.sleep(35);
 				}
 				//Dashboard.clean();
 				// Let the thread sleep for a while.

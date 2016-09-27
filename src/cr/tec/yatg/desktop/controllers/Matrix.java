@@ -1,11 +1,14 @@
 package cr.tec.yatg.desktop.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 /**
+ * Controller de la Matrix
  * Created by joseph on 22/09/16.
  */
 public class Matrix {
@@ -54,8 +57,10 @@ public class Matrix {
 				color = Color.WHITE;
 				break;
 		}
-
-		matrix.getChildren().add(Square(color, i, j));
+		Rectangle moto = Square(color, i, j);
+		Image img = new Image("/cr/tec/yatg/desktop/resources/images/moto.png");
+		moto.setFill(new ImagePattern(img));
+		matrix.getChildren().add(moto);
 
 	}
 
