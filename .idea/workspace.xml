@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1bac1f9-d94d-42fa-8a88-b220a9ad1b9a" name="Default" comment="Implementado ActionMessage y paquete comms">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cr/tec/yatg/desktop/Main.java" afterPath="$PROJECT_DIR$/src/cr/tec/yatg/desktop/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cr/tec/yatg/desktop/controllers/Splash.java" afterPath="$PROJECT_DIR$/src/cr/tec/yatg/desktop/controllers/Splash.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cr/tec/yatg/desktop/resources/views/splash.fxml" afterPath="$PROJECT_DIR$/src/cr/tec/yatg/desktop/resources/views/splash.fxml" />
     </list>
     <ignored path="yatg-desktop.iws" />
@@ -34,7 +32,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Splash.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Splash.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cr/tec/yatg/desktop/controllers/Splash.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="41">
@@ -46,14 +44,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="splash.fxml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="splash.fxml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cr/tec/yatg/desktop/resources/views/splash.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="33" column="191" selection-start-line="33" selection-start-column="191" selection-end-line="33" selection-end-column="191" />
+            <state relative-caret-position="230">
+              <caret line="16" column="57" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -117,8 +115,8 @@
         <option value="$PROJECT_DIR$/src/cr/tec/yatg/desktop/services/comms/Action.java" />
         <option value="$PROJECT_DIR$/src/cr/tec/yatg/desktop/services/comms/ActionMessage.java" />
         <option value="$PROJECT_DIR$/src/cr/tec/yatg/desktop/Main.java" />
-        <option value="$PROJECT_DIR$/src/cr/tec/yatg/desktop/resources/views/splash.fxml" />
         <option value="$PROJECT_DIR$/src/cr/tec/yatg/desktop/controllers/Splash.java" />
+        <option value="$PROJECT_DIR$/src/cr/tec/yatg/desktop/resources/views/splash.fxml" />
       </list>
     </option>
   </component>
@@ -1123,17 +1121,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cr/tec/yatg/desktop/resources/views/splash.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="33" column="191" selection-start-line="33" selection-start-column="191" selection-end-line="33" selection-end-column="191" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cr/tec/yatg/desktop/controllers/Splash.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="41">
@@ -1141,6 +1128,17 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cr/tec/yatg/desktop/resources/views/splash.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="16" column="57" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>
