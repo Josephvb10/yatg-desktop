@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.tec.yatg.desktop.controllers.Splash">
    <children>
       <ParallelCamera />
@@ -20,7 +19,7 @@
             <Image url="@../images/tron-legacy-desktop.png" />
          </image>
       </ImageView>
-      <TextField layoutX="265.0" layoutY="491.0" style="-fx-text-fill: #32ffff; -fx-background-color: 0;" text="Press click to play...">
+      <TextField layoutX="265.0" layoutY="491.0" style="-fx-text-fill: #32ffff; -fx-background-color: #000000;" text="Press click to play...">
          <font>
             <Font size="33.0" />
          </font>
@@ -31,7 +30,7 @@
             <Insets />
          </opaqueInsets>
       </TextField>
-      <Button alignment="CENTER" layoutX="-10.0" layoutY="-2.0" mnemonicParsing="false" opacity="0.05" prefHeight="690.0" prefWidth="898.0" text="PLAY" onAction="#pressPlay">
+      <Button alignment="CENTER" layoutX="-10.0" layoutY="-2.0" mnemonicParsing="false" onAction="#pressPlay" opacity="0.05" prefHeight="690.0" prefWidth="898.0" text="PLAY">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
