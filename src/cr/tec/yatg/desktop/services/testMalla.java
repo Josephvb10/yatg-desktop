@@ -1,12 +1,19 @@
 package cr.tec.yatg.desktop.services;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import cr.tec.yatg.desktop.services.Structures.*;
 import cr.tec.yatg.desktop.services.Structures.Malla.LinkedMatrix;
 import cr.tec.yatg.desktop.services.comms.OutputMessage;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+
+
 public class testMalla {
 
-	public static void main(String[] args) {
+	public static GenericLinkedList<Item> main(String[] args) {
 		// TODO Auto-generated method stub		
 		LinkedMatrix malla = new LinkedMatrix(10,10);
 		Item item1 = new Item(ItemType.bomb, 1, 0);
@@ -48,10 +55,42 @@ public class testMalla {
 		//String Jsonlist = JsonConverter.objectToJson(malla.getSimpleItemList());
 		//System.out.println(Jsonlist);
 		//System.out.println(malla.getSimpleItemList());
-		//System.out.println("hola")
+		//System.out.println("hola");
 		OutputMessage mensaje = new OutputMessage(malla.getSimpleItemList(), player1);
 		String jsonMens = mensaje.toJson();
 		System.out.println(jsonMens);
+
+
+		try {
+			Socket misocket = new Socket("192.168.1.11", 1313);
+			DataOutputStream flujo_salida = new DataOutputStream(misocket.getOutputStream());
+			flujo_salida.writeUTF(jsonMens);
+			flujo_salida.close();
+
+
+		} catch (IOException e1) {
+			System.out.println(e1.getMessage());
+		}
+
+
+		String inputMessage = "{\"id\":9999,\"player\":{\"owner\":\"player1\",\"speed\":1,\"fuel\":97.0,\"currentDirection\":\"right\",\"extraTrail\":4,\"powerUpSteps\":0,\"trail\":{\"head\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":8,\"indexJ\":4,\"value\":0,\"owner\":\"player1\",\"head\":true},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":8,\"indexJ\":3,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":8,\"indexJ\":2,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":8,\"indexJ\":1,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":8,\"indexJ\":0,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":9,\"indexJ\":0,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":0,\"indexJ\":0,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":null}}}}}}},\"empty\":false,\"size\":7},\"isDead\":false,\"powerUpActivated\":false},\"itemList\":{\"head\":{\"data\":{\"type\":\"bomb\",\"indexI\":1,\"indexJ\":0,\"value\":0,\"owner\":null,\"head\":false},\"next\":{\"data\":{\"type\":\"bomb\",\"indexI\":1,\"indexJ\":1,\"value\":0,\"owner\":null,\"head\":false},\"next\":{\"data\":{\"type\":\"increaseTail\",\"indexI\":1,\"indexJ\":2,\"value\":6,\"owner\":null,\"head\":false},\"next\":{\"data\":{\"type\":\"increaseTail\",\"indexI\":1,\"indexJ\":3,\"value\":1,\"owner\":null,\"head\":false},\"next\":{\"data\":{\"type\":\"shield\",\"indexI\":2,\"indexJ\":1,\"value\":7,\"owner\":null,\"head\":false},\"next\":{\"data\":{\"type\":\"turbo\",\"indexI\":3,\"indexJ\":2,\"value\":10,\"owner\":null,\"head\":false},\"next\":{\"data\":{\"type\":\"fuel\",\"indexI\":5,\"indexJ\":3,\"value\":57,\"owner\":null,\"head\":false},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":8,\"indexJ\":0,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":8,\"indexJ\":1,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":8,\"indexJ\":2,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":8,\"indexJ\":3,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":8,\"indexJ\":4,\"value\":0,\"owner\":\"player1\",\"head\":true},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":9,\"indexJ\":0,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":null}}}}}}}}}}}}},\"empty\":false,\"size\":13}}";
+		System.out.println(inputMessage);
+		ObjectMapper mapper = new ObjectMapper(); // can reuse, share globally
+		OutputMessage newMessage = new OutputMessage();
+		// IMPORTANT
+		// without this option set adding new fields breaks old code
+		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+		try {
+			newMessage = mapper.readValue(inputMessage, OutputMessage.class);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+			//e.printStackTrace();
+		}
+		newMessage.getId();
+		return newMessage.getItemList();
+
 	}
 
 }
