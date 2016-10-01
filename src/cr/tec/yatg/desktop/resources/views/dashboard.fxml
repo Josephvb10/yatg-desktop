@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.layout.Pane?>
-<Pane xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.tec.yatg.desktop.controllers.Dashboard" fx:id="dashboard"
-      layoutX="680.0" prefHeight="680.0" prefWidth="200.0" style="-fx-background-color: blue;"/>
