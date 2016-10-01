@@ -18,7 +18,8 @@
             <Button layoutX="44.0" layoutY="469.0" mnemonicParsing="false" onAction="#doSomething" text="Button"/>
             <Button cancelButton="true" layoutY="647.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0"
                     styleClass="exit-button" text="Salir del juego"/>
-            <ProgressBar layoutX="23.0" layoutY="134.0" prefHeight="20.0" prefWidth="155.0" progress="1.0"/>
+            <ProgressBar fx:id="fuelBar" layoutX="23.0" layoutY="134.0" prefHeight="20.0" prefWidth="155.0"
+                         progress="1.0"/>
             <Label layoutX="23.0" layoutY="115.0" text="FUEL" textFill="WHITE">
                 <font>
                     <Font name="Liberation Mono Bold" size="13.0"/>
@@ -27,15 +28,18 @@
             <Pane layoutY="-1.0" prefHeight="98.0" prefWidth="200.0" style="-fx-background-color: #333;">
                 <children>
                     <Label layoutX="82.0" layoutY="68.0" text="Game" textFill="WHITE"/>
-                    <Label layoutX="61.0" layoutY="27.0" text="Tron" textFill="WHITE">
+                    <Label layoutX="64.0" layoutY="30.0" style="-fx-font-size: 30px;" text="Tron" textFill="WHITE">
                         <font>
                             <Font size="37.0"/>
                         </font>
                     </Label>
-                    <Label layoutX="65.0" layoutY="14.0" text="Yet Another" textFill="WHITE"/>
+                    <Label layoutX="54.0" layoutY="14.0" text="Yet Another" textFill="WHITE"/>
                 </children>
             </Pane>
-            <Label layoutX="57.0" layoutY="586.0" text="CURRENT SERVER:" textFill="WHITE"/>
+            <Label layoutX="14.0" layoutY="564.0" text="CURRENT SERVER:" textFill="WHITE"/>
+            <Label fx:id="serverIp" layoutX="14.0" layoutY="581.0" styleClass="dynamic" text="\%IP%" textFill="WHITE"/>
+            <Label layoutX="14.0" layoutY="605.0" text="ACTIVE PLAYERS NO:" textFill="WHITE"/>
+            <Label fx:id="playno" layoutX="14.0" layoutY="622.0" styleClass="dynamic" text="\%PLYNO%" textFill="WHITE"/>
         </children>
     </Pane>
 </AnchorPane>

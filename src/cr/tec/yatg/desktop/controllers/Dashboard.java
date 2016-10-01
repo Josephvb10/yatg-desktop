@@ -4,6 +4,8 @@ import cr.tec.yatg.desktop.services.ControllerFacade;
 import cr.tec.yatg.desktop.services.Runner;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
@@ -18,6 +20,12 @@ public class Dashboard {
 
 	@FXML
 	private Matrix matrixController;
+
+	@FXML
+	private Label serverIp;
+
+	@FXML
+	private ProgressBar fuelBar;
 
 
 	@FXML
@@ -40,6 +48,10 @@ public class Dashboard {
 		Platform.setImplicitExit(false);
 		Runner R1 = new Runner("Nombre", matrixController);
 		R1.start();
+
+		serverIp.setText("192.168.1.0:8043");
+
+		fuelBar.setProgress(0.5);
 
 	}
 
