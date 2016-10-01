@@ -1,5 +1,9 @@
-package Comunication;
-import Structures.*;
+package cr.tec.yatg.desktop.services.comms;
+
+import cr.tec.yatg.desktop.services.JsonConverter;
+import cr.tec.yatg.desktop.services.Structures.GenericLinkedList;
+import cr.tec.yatg.desktop.services.Structures.Item;
+import cr.tec.yatg.desktop.services.Structures.Troncycle;
 
 public class OutputMessage {
 	private int id;

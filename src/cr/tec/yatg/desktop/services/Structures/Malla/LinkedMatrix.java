@@ -1,6 +1,6 @@
-package Structures.Malla;
+package cr.tec.yatg.desktop.services.Structures.Malla;
 
-import Structures.*;
+import cr.tec.yatg.desktop.services.Structures.*;
 
 public class LinkedMatrix {
 	private Nodo head;
@@ -229,7 +229,7 @@ public class LinkedMatrix {
 				else if (nodoToCheck.getItem().getType() == ItemType.increaseTail) {
 					player.addItem(nodoToCheck.getItem());
 					player.addExtraTrail(nodoToCheck.getItem().getValue());
-					System.out.println("Aumento de tamaño" + nodoToCheck.getItem().getValue());
+					System.out.println("Aumento de tamaï¿½o" + nodoToCheck.getItem().getValue());
 				}
 
 				else if (nodoToCheck.getItem().getType() == ItemType.shield) {

@@ -1,7 +1,6 @@
-package Structures;
+package cr.tec.yatg.desktop.services.Structures;
 import java.util.Random;
 
-import Structures.Item;
 
 
 public class Troncycle {

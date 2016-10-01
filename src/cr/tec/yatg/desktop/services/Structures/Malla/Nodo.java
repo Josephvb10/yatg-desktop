@@ -1,7 +1,7 @@
-package Structures.Malla;
+package cr.tec.yatg.desktop.services.Structures.Malla;
 
 
-import Structures.Item;
+import cr.tec.yatg.desktop.services.Structures.Item;
 
 public class Nodo {
 	private Nodo up, down, left, right, next;

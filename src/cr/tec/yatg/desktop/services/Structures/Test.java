@@ -1,4 +1,4 @@
-package Structures;
+package cr.tec.yatg.desktop.services.Structures;
 
 import java.util.PriorityQueue;
 
