@@ -1,6 +1,6 @@
 package cr.tec.yatg.desktop.controllers;
 
-
+import javafx.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -40,11 +41,11 @@ public class Login {
 	int playerPort;
 	@FXML 
 	private void pressLogin(){
-		try {
+		try {		
 			checkPort = getPort.getText();
             playerUsername=getUsername.getText();
 			playerIp=getIp.getText();
-			if (checkPort != "" & playerUsername !="" & playerIp !=""){
+			if (playerIp.length() != 0 && checkPort.length() != 0 && playerUsername.length() !=0){
 				playerPort = Integer.parseInt(checkPort);
 				if (0 <= playerPort & playerPort <= 9999){
 					System.out.println("Entered Username: "+getUsername.getText());
@@ -64,11 +65,22 @@ public class Login {
 						System.exit(0);
 					});
 					stage.show();
-			
-	
-			
 				}
-				} }catch (Exception e) {
+				else{
+					Alert alert = new Alert(AlertType.ERROR);
+					alert.setTitle("ERROR:");
+					alert.setHeaderText("Please checkout the port");
+					alert.setContentText("Insert a port between 0 and 9999");
+					alert.showAndWait();
+				}
+			}else{
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("ERROR:");
+				alert.setHeaderText("Please fill the required data");
+				alert.setContentText("Example: \n	Username: HailHarambe69 \n	IP: 292.168.1.2 \n	Port: 9697 ");
+				alert.showAndWait();
+			}	
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
