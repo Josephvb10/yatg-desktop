@@ -14,8 +14,8 @@
         <children>
 
 
-            <Button layoutX="44.0" layoutY="469.0" mnemonicParsing="false" onAction="#doSomething" text="Button" />
-            <Button cancelButton="true" layoutY="647.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" styleClass="exit-button" text="Salir del juego" />
+            <Button layoutX="43.0" layoutY="340.0" mnemonicParsing="false" onAction="#doSomething" text="Press me!" />
+            <Button cancelButton="true" layoutY="647.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="25.0" prefWidth="200.0" styleClass="exit-button" text="Salir del juego" />
             <ProgressBar fx:id="fuelBar" layoutX="23.0" layoutY="134.0" prefHeight="20.0" prefWidth="155.0" progress="1.0" />
             <Label layoutX="23.0" layoutY="115.0" text="FUEL" textFill="WHITE">
                 <font>

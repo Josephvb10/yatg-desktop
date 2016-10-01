@@ -1,5 +1,7 @@
 package cr.tec.yatg.desktop.controllers;
 
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,7 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 /**
  * Main GUI controller
@@ -22,7 +24,7 @@ public class Splash {
 	private void pressPlay() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/views/main.fxml"));
-			Parent mainScreen = (Parent) fxmlLoader.load();
+			Parent mainScreen = fxmlLoader.load();
 			Stage stage = new Stage();
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.setTitle("Yet Another Tron Game");
@@ -31,6 +33,14 @@ public class Splash {
 
 			Stage mainStage = (Stage) playButton.getScene().getWindow();
 			mainStage.close();
+
+			stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+				@Override
+				public void handle(WindowEvent e) {
+					Platform.exit();
+					System.exit(0);
+				}
+			});
 			stage.show();
 		} catch (Exception e) {
 			e.printStackTrace();

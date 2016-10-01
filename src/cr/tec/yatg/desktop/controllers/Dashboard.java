@@ -60,6 +60,12 @@ public class Dashboard {
 
 	}
 
+	public void exitGame() {
+		System.out.println("Saliendo");
+		Platform.exit();
+		System.exit(0);
+	}
+
 
 	public void initialize(MouseEvent mouseEvent) {
 		ControllerFacade.getInstance().setMatrix(matrixController);
