@@ -17,7 +17,7 @@ public class Login {
 	Button playButton;
 
 	@FXML 
-	private void pressPlay() {
+	private void pressLogin() {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/views/Matrix.fxml"));
 			Parent mainScreen = (Parent) fxmlLoader.load();
