@@ -25,6 +25,10 @@ public class Dashboard {
 	private Label serverIp;
 
 	@FXML
+	private Label playerNum;
+
+
+	@FXML
 	private ProgressBar fuelBar;
 
 
@@ -50,6 +54,7 @@ public class Dashboard {
 		R1.start();
 
 		serverIp.setText("192.168.1.0:8043");
+		playerNum.setText("1");
 
 		fuelBar.setProgress(0.5);
 

@@ -34,9 +34,9 @@
                 </children>
             </Pane>
             <Label layoutX="14.0" layoutY="564.0" text="CURRENT SERVER:" textFill="WHITE" />
-         <Label fx:id="serverIp" layoutX="14.0" layoutY="581.0" styleClass="dynamic" text="\%IP%" textFill="WHITE" />
-         <Label layoutX="14.0" layoutY="605.0" text="ACTIVE PLAYERS NO:" textFill="WHITE" />
-         <Label fx:id="playno" layoutX="14.0" layoutY="622.0" styleClass="dynamic" text="\%PLYNO%" textFill="WHITE" />
+            <Label fx:id="serverIp" layoutX="14.0" layoutY="581.0" styleClass="dynamic" text="\%IP%" textFill="WHITE" />
+            <Label layoutX="14.0" layoutY="605.0" text="ACTIVE PLAYERS NO:" textFill="WHITE" />
+            <Label fx:id="playerNum" layoutX="14.0" layoutY="622.0" styleClass="dynamic" text="\%PLYNO%" textFill="WHITE" />
         </children>
     </Pane>
 </AnchorPane>
