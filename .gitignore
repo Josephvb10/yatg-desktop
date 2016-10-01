@@ -17,3 +17,5 @@ out/production/yatg-desktop/cr/tec/yatg/desktop/controllers/
 out/production/yatg-desktop/cr/tec/yatg/desktop/services/
 /.idea/
 /.idea/*
+out/
+out/*
