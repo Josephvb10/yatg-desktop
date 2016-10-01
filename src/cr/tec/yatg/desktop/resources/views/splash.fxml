@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.ParallelCamera?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -11,13 +10,12 @@
 
 <AnchorPane fx:id="splashPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.tec.yatg.desktop.controllers.Splash">
    <children>
-      <ParallelCamera />
       <ImageView fitHeight="687.0" fitWidth="1232.0" layoutX="-116.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/tron-legacy-desktop.png" />
          </image>
       </ImageView>
-      <Button fx:id="playButton" alignment="CENTER" layoutX="-10.0" layoutY="-2.0" mnemonicParsing="false" onAction="#pressPlay" opacity="0.05" prefHeight="690.0" prefWidth="898.0" text="PLAY">
+      <Button fx:id="playButton" alignment="CENTER" layoutX="-10.0" layoutY="-2.0" mnemonicParsing="false" onAction="#pressPlay" opacity="0.05" prefHeight="690.0" prefWidth="898.0">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
