@@ -1,6 +1,5 @@
 package cr.tec.yatg.desktop.controllers;
 
-import java.awt.TextField;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -8,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -18,16 +18,16 @@ import javafx.stage.Stage;
 
 public class Login {
 	@FXML
-	Button loginButton;
+	private Button loginButton;
 	
 	@FXML
-	TextField getUsername;
+	private TextField getUsername;
 	
 	@FXML
-	TextField getIp;
+	private TextField getIp;
 	
 	@FXML
-	TextField getPort;
+	private TextField getPort;
 	
 	@FXML 
 	private void pressLogin() {
