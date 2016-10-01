@@ -21,17 +21,17 @@
       <TextField layoutX="452.0" layoutY="629.0" />
       <TextField layoutX="280.0" layoutY="481.0" prefHeight="27.0" prefWidth="340.0" />
       <TextField layoutX="279.0" layoutY="566.0" prefHeight="27.0" prefWidth="340.0" />
-      <Label layoutX="271.0" layoutY="433.0" prefHeight="42.0" prefWidth="355.0" text="Enter your username:" textFill="#42cedd">
+      <Label layoutX="271.0" layoutY="433.0" prefHeight="42.0" prefWidth="355.0" text="Enter your username:" textFill="#42cedd" fx:id="getUsername">
          <font>
             <Font name="Ayuthaya" size="29.0" />
          </font>
       </Label>
-      <Label layoutX="272.0" layoutY="518.0" prefHeight="42.0" prefWidth="355.0" text="Enter the server IP:" textFill="#42cedd">
+      <Label layoutX="272.0" fx:id="GetIp" layoutY="518.0" prefHeight="42.0" prefWidth="355.0" text="Enter the server IP:" textFill="#42cedd">
          <font>
             <Font name="Ayuthaya" size="29.0" />
          </font>
       </Label>
-      <Label layoutX="274.0" layoutY="620.0" prefHeight="42.0" prefWidth="355.0" text="Game Port:" textFill="#42cedd">
+      <Label layoutX="274.0" fx:id="GetPort" layoutY="620.0" prefHeight="42.0" prefWidth="355.0" text="Game Port:" textFill="#42cedd">
          <font>
             <Font name="Ayuthaya" size="29.0" />
          </font>

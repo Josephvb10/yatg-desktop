@@ -1,5 +1,7 @@
 package cr.tec.yatg.desktop.controllers;
 
+import java.awt.TextField;
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,10 +19,21 @@ import javafx.stage.Stage;
 public class Login {
 	@FXML
 	Button loginButton;
-
+	
+	@FXML
+	TextField getUsername;
+	
+	@FXML
+	TextField getIp;
+	
+	@FXML
+	TextField getPort;
+	
 	@FXML 
 	private void pressLogin() {
+		
 		try {
+			
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/views/main.fxml"));
 			Parent mainScreen = fxmlLoader.load();
 			Stage stage = new Stage();

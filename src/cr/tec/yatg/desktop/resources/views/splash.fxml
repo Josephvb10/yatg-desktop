@@ -20,9 +20,9 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Button>
-      <Label layoutX="288.0" layoutY="502.0" style="-fx-text-fill: #32ffff;" text="Press click to play...">
+      <Label layoutX="222.0" layoutY="492.0" style="-fx-text-fill: #32ffff;" text="PRESS CLICK TO PLAY...">
          <font>
-            <Font size="33.0" />
+            <Font name="TRON" size="27.0" />
          </font>
       </Label>
    </children>
