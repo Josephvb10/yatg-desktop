@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="f1bac1f9-d94d-42fa-8a88-b220a9ad1b9a" name="Default" comment="Controllers del Fuel Bar y Labels">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/yatg-desktop/cr/tec/yatg/desktop/resources/views/main.fxml" afterPath="$PROJECT_DIR$/out/production/yatg-desktop/cr/tec/yatg/desktop/resources/views/main.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cr/tec/yatg/desktop/controllers/Dashboard.java" afterPath="$PROJECT_DIR$/src/cr/tec/yatg/desktop/controllers/Dashboard.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cr/tec/yatg/desktop/resources/views/main.fxml" afterPath="$PROJECT_DIR$/src/cr/tec/yatg/desktop/resources/views/main.fxml" />
+=======
+    <list default="true" id="f1bac1f9-d94d-42fa-8a88-b220a9ad1b9a" name="Default" comment="Terminar los threads al salir del juego">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/yatg-desktop/cr/tec/yatg/desktop/resources/views/main.fxml" afterPath="$PROJECT_DIR$/out/production/yatg-desktop/cr/tec/yatg/desktop/resources/views/main.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cr/tec/yatg/desktop/controllers/Splash.java" afterPath="$PROJECT_DIR$/src/cr/tec/yatg/desktop/controllers/Splash.java" />
+>>>>>>> 733a39a0af1abfd23005d3333f3da990f1ca8834
     </list>
     <ignored path="yatg-desktop.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Splash.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Splash.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cr/tec/yatg/desktop/controllers/Splash.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
+            <state relative-caret-position="239">
+              <caret line="40" column="15" selection-start-line="40" selection-start-column="15" selection-end-line="40" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -37,11 +44,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Dashboard.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Dashboard.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cr/tec/yatg/desktop/controllers/Dashboard.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="635">
               <caret line="56" column="28" selection-start-line="56" selection-start-column="28" selection-end-line="56" selection-end-column="28" />
+=======
+            <state relative-caret-position="126">
+              <caret line="65" column="23" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
+>>>>>>> 733a39a0af1abfd23005d3333f3da990f1ca8834
               <folding />
             </state>
           </provider>
@@ -63,8 +75,13 @@
       <file leaf-file-name="main.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cr/tec/yatg/desktop/resources/views/main.fxml">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="78">
               <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+=======
+            <state relative-caret-position="24">
+              <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+>>>>>>> 733a39a0af1abfd23005d3333f3da990f1ca8834
               <folding />
             </state>
           </provider>
@@ -148,12 +165,12 @@
         <option value="$PROJECT_DIR$/src/cr/tec/yatg/desktop/services/comms/Action.java" />
         <option value="$PROJECT_DIR$/src/cr/tec/yatg/desktop/services/comms/ActionMessage.java" />
         <option value="$PROJECT_DIR$/src/cr/tec/yatg/desktop/Main.java" />
-        <option value="$PROJECT_DIR$/src/cr/tec/yatg/desktop/controllers/Splash.java" />
         <option value="$PROJECT_DIR$/src/cr/tec/yatg/desktop/resources/views/splash.fxml" />
         <option value="$PROJECT_DIR$/src/cr/tec/yatg/desktop/resources/views/dashboard.fxml" />
         <option value="$PROJECT_DIR$/src/cr/tec/yatg/desktop/resources/views/theme.css" />
         <option value="$PROJECT_DIR$/src/cr/tec/yatg/desktop/resources/views/main.fxml" />
         <option value="$PROJECT_DIR$/src/cr/tec/yatg/desktop/controllers/Dashboard.java" />
+        <option value="$PROJECT_DIR$/src/cr/tec/yatg/desktop/controllers/Splash.java" />
       </list>
     </option>
   </component>
@@ -791,7 +808,25 @@
       <option name="project" value="LOCAL" />
       <updated>1475306729508</updated>
     </task>
+<<<<<<< HEAD
     <option name="localTasksCounter" value="14" />
+=======
+    <task id="LOCAL-00014" summary="Controllers del Fuel Bar y Labels v2">
+      <created>1475307060881</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1475307060881</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Terminar los threads al salir del juego">
+      <created>1475307925049</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1475307925049</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
+>>>>>>> 733a39a0af1abfd23005d3333f3da990f1ca8834
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -840,6 +875,7 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="Primer commit" />
     <MESSAGE value="Primeros prototipos de interfaz&#10;" />
@@ -852,7 +888,13 @@
     <MESSAGE value="Removido Dashboard redundante&#10;" />
     <MESSAGE value="CSS del Dashboard" />
     <MESSAGE value="Controllers del Fuel Bar y Labels" />
+<<<<<<< HEAD
     <option name="LAST_COMMIT_MESSAGE" value="Controllers del Fuel Bar y Labels" />
+=======
+    <MESSAGE value="Controllers del Fuel Bar y Labels v2" />
+    <MESSAGE value="Terminar los threads al salir del juego" />
+    <option name="LAST_COMMIT_MESSAGE" value="Terminar los threads al salir del juego" />
+>>>>>>> 733a39a0af1abfd23005d3333f3da990f1ca8834
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1176,8 +1218,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cr/tec/yatg/desktop/resources/views/main.fxml">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="78">
           <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+=======
+        <state relative-caret-position="24">
+          <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+>>>>>>> 733a39a0af1abfd23005d3333f3da990f1ca8834
           <folding />
         </state>
       </provider>
@@ -1185,21 +1232,27 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cr/tec/yatg/desktop/controllers/Splash.java">
+    <entry file="file://$PROJECT_DIR$/src/cr/tec/yatg/desktop/controllers/Dashboard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="126">
+          <caret line="65" column="23" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cr/tec/yatg/desktop/controllers/Dashboard.java">
+    <entry file="file://$PROJECT_DIR$/src/cr/tec/yatg/desktop/controllers/Splash.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="635">
           <caret line="56" column="28" selection-start-line="56" selection-start-column="28" selection-end-line="56" selection-end-column="28" />
           <folding />
+=======
+        <state relative-caret-position="239">
+          <caret line="40" column="15" selection-start-line="40" selection-start-column="15" selection-end-line="40" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+>>>>>>> 733a39a0af1abfd23005d3333f3da990f1ca8834
         </state>
       </provider>
     </entry>
