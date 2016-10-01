@@ -1,7 +1,7 @@
 package cr.tec.yatg.desktop.controllers;
 
-import javafx.fxml.FXML;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,6 +15,7 @@ import javafx.stage.Stage;
  */
 
 public class Login {
+	@FXML
 	Button loginButton;
 
 	@FXML 
