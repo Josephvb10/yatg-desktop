@@ -67,3 +67,10 @@
 -fx-text-fill: #BBB;
 -fx-font-size: 11px;
 }
+
+.itemContainer {
+    -fx-border-color: #DDD;
+    -fx-border-width: 1px;
+    -fx-border-style: solid;
+    -fx-padding: 15px;
+}

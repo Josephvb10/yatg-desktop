@@ -11,11 +11,6 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /bin/
-/bin/*
 .DS_Store
-out/production/yatg-desktop/cr/tec/yatg/desktop/controllers/
-out/production/yatg-desktop/cr/tec/yatg/desktop/services/
 /.idea/
-/.idea/*
 out/
-out/*
