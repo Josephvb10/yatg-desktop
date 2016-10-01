@@ -1,7 +1,6 @@
 package cr.tec.yatg.desktop.controllers;
 
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 /**
  * Main GUI controller
@@ -34,12 +32,9 @@ public class Splash {
 			Stage mainStage = (Stage) playButton.getScene().getWindow();
 			mainStage.close();
 
-			stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-				@Override
-				public void handle(WindowEvent e) {
-					Platform.exit();
-					System.exit(0);
-				}
+			stage.setOnCloseRequest(e -> {
+				Platform.exit();
+				System.exit(0);
 			});
 			stage.show();
 		} catch (Exception e) {
