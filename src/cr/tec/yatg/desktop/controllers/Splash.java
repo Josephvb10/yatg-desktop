@@ -21,13 +21,8 @@ public class Splash {
 	@FXML 
 	private void pressPlay() {
 		try {
-<<<<<<< HEAD
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/views/Login.fxml"));
-			Parent mainScreen = (Parent) fxmlLoader.load();
-=======
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/views/main.fxml"));
 			Parent mainScreen = fxmlLoader.load();
->>>>>>> 733a39a0af1abfd23005d3333f3da990f1ca8834
 			Stage stage = new Stage();
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.setTitle("Yet Another Tron Game");
