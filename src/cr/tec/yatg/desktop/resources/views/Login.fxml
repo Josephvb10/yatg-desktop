@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="splashPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.tec.yatg.desktop.controllers.Splash">
+   <children>
+      <ImageView fitHeight="687.0" fitWidth="1232.0" layoutX="-116.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tron-legacy-desktop.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
