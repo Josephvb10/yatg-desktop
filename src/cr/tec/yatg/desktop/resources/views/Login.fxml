@@ -36,7 +36,7 @@
             <Font name="Ayuthaya" size="29.0" />
          </font>
       </Label>
-      <Button layoutX="264.0" layoutY="60.0" mnemonicParsing="false" prefHeight="360.0" prefWidth="357.0" style="-fx-background-radius: 1000; -fx-background-color: rgba(200,200,200,0.3);" text="PLAY" onAction="#pressLogin" textFill="#60d0e1" underline="true">
+      <Button layoutX="264.0" layoutY="60.0" mnemonicParsing="false" onAction="#pressLogin" prefHeight="360.0" prefWidth="357.0" style="-fx-background-radius: 1000; -fx-background-color: rgba(200,200,200,0.3);" text="PLAY" textFill="#60d0e1" underline="true">
          <font>
             <Font name="TRON" size="34.0" />
          </font>
