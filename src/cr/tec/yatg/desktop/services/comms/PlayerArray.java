@@ -36,7 +36,7 @@ public class PlayerArray {
 	public PlayerArrayNodo get(String name) {
 		PlayerArrayNodo actual = this.head;
 		while (actual != null) {
-			if (actual.getName().equals(name)) {
+			if (actual.getName() != null && actual.getName().equals(name)) {
 				return actual;
 			}
 
@@ -49,10 +49,12 @@ public class PlayerArray {
 
 	public void remove(int i) {
 		get(i).anulate();
+		this.size--;
 	}
 
 	public void remove(String name) {
 		get(name).anulate();
+		this.size--;
 	}
 
 	public int insertAvailable(String name, PrintWriter out) {
@@ -61,6 +63,7 @@ public class PlayerArray {
 			if (actual.getName() == null) {
 				actual.setName(name);
 				actual.setOut(out);
+				this.size++;
 				return actual.getIndexNumber();
 			}
 
@@ -71,17 +74,7 @@ public class PlayerArray {
 	}
 
 	public int getSize() {
-		int count = 0;
-		PlayerArrayNodo actual = this.head;
-		while (actual != null) {
-			if (actual.getName() != null) {
-				count++;
-			}
-
-			actual = actual.getNext();
-		}
-
-		return count;
+		return size;
 	}
 
 	public void sendAll(String msg) {
@@ -107,4 +100,13 @@ public class PlayerArray {
 		actual.println(msg);
 		actual.flush();
 	}
+
+	public boolean contains(String name) {
+		return get(name) != null;
+	}
+
+	public boolean contains(int i) {
+		return get(i) != null;
+	}
 }
+

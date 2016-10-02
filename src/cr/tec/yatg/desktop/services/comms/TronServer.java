@@ -1,33 +1,14 @@
 package cr.tec.yatg.desktop.services.comms;
 
-import java.io.PrintWriter;
 import java.net.*;
 import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
 
 /**
  * Created by joseph on 10/2/16.
  */
 public class TronServer {
+	public static final PlayerArray players = new PlayerArray();
 	private static final int PORT = 8081;
-	public static PlayerArray players = new PlayerArray();
-	private static HashSet<String> names = new HashSet<String>();
-	private static HashSet<PrintWriter> clients = new HashSet<PrintWriter>();
-	private static Map<String, PrintWriter> map = new HashMap<String, PrintWriter>();
-
-	public static HashSet<String> getNames() {
-		return names;
-	}
-
-	public static HashSet<PrintWriter> getClients() {
-		return clients;
-	}
-
-	public static Map<String, PrintWriter> getMap() {
-		return map;
-	}
 
 	public static void main(String[] args) {
 
