@@ -6,16 +6,13 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-/**
+/** Clase encargada de leer los Sockets y procesarlos
  * Created by joseph on 10/2/16.
  */
 public class ServerRead extends Thread {
 	private String name;
 	private Socket socket;
-	private BufferedReader in;
-	private PrintWriter out;
 	private String ip;
-	private String input;
 	private boolean running = true;
 
 	ServerRead(Socket socket) {
@@ -26,8 +23,8 @@ public class ServerRead extends Thread {
 
 	public void run() {
 		try {
-			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			out = new PrintWriter(socket.getOutputStream(), true);
+			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
 			if (TronServer.players.getSize() >= 4) {
 				System.out.println("Cliente removido. Ya hay más de 4");
@@ -85,6 +82,7 @@ public class ServerRead extends Thread {
 
 
 			// Este lee los mensajes
+			String input;
 			while ((input = in.readLine()) != null) {
 				System.out.println(name + "(" + ip + ") dijo: " + input);
 				TronServer.players.sendAll(name + "(" + ip + ") dijo: " + input);

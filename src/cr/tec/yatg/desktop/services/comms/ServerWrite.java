@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
  * Created by joseph on 10/2/16.
  */
 public class ServerWrite extends Thread {
-	BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+	private BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
 
 
 	public void run() {

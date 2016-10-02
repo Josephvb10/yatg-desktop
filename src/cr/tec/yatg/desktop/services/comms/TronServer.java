@@ -14,19 +14,16 @@ public class TronServer {
 
 		try {
 
-			ServerSocket listener = new ServerSocket(PORT);
 			// TODO: 10/2/16 Mostrar la IP visualmente
 			System.out.println("IP del server: " + getIP());
 
 			new ServerWrite().start();
 
-			try {
+			try (ServerSocket listener = new ServerSocket(PORT)) {
 				while (true) {
 					System.out.println("Escuchando clientes");
 					new ServerRead(listener.accept()).start();
 				}
-			} finally {
-				listener.close();
 			}
 		} catch (Exception e) {
 			// TODO: 10/2/16 Agregar un mensaje visual para el error cuando no puede abrir el server
@@ -35,7 +32,7 @@ public class TronServer {
 
 	}
 
-	public static String getIP() {
+	private static String getIP() {
 		String ip = "no network";
 		try {
 			Enumeration<NetworkInterface> n = NetworkInterface.getNetworkInterfaces();
@@ -54,7 +51,7 @@ public class TronServer {
 					}
 				}
 			}
-		} catch (SocketException e) {
+		} catch (SocketException ignored) {
 		}
 		return ip;
 	}

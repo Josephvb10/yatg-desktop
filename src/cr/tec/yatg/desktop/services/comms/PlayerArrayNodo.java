@@ -5,17 +5,17 @@ import java.io.PrintWriter;
 /**
  * Created by joseph on 10/2/16.
  */
-public class PlayerArrayNodo {
+class PlayerArrayNodo {
 	private PlayerArrayNodo next = null;
 	private int indexNumber;
 	private PrintWriter out = null;
 	private String name = null;
 
-	public int getIndexNumber() {
+	int getIndexNumber() {
 		return indexNumber;
 	}
 
-	public void setIndexNumber(int indexNumber) {
+	void setIndexNumber(int indexNumber) {
 		this.indexNumber = indexNumber;
 	}
 
@@ -40,11 +40,11 @@ public class PlayerArrayNodo {
 		return next;
 	}
 
-	public void setNext(PlayerArrayNodo next) {
+	void setNext(PlayerArrayNodo next) {
 		this.next = next;
 	}
 
-	public void anulate() {
+	void anulate() {
 		this.out = null;
 		this.name = null;
 	}
