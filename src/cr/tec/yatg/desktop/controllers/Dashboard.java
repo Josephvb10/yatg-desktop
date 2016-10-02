@@ -2,6 +2,11 @@ package cr.tec.yatg.desktop.controllers;
 
 import cr.tec.yatg.desktop.services.ControllerFacade;
 import cr.tec.yatg.desktop.services.Runner;
+import cr.tec.yatg.desktop.services.Structures.GenericLinkedList;
+import cr.tec.yatg.desktop.services.Structures.GenericNode;
+import cr.tec.yatg.desktop.services.Structures.Item;
+import cr.tec.yatg.desktop.services.Structures.ItemType;
+import cr.tec.yatg.desktop.services.testMalla;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -49,14 +54,31 @@ public class Dashboard {
 
 		//matrixController.setEstela(1, 20, 11);
 
-		Platform.setImplicitExit(false);
-		Runner R1 = new Runner("Nombre", matrixController);
-		R1.start();
+		//Platform.setImplicitExit(false);
+		//Runner R1 = new Runner("Nombre", matrixController);
+		//R1.start();
 
 		serverIp.setText("192.168.1.0:8043");
 		playerNum.setText("1");
 
 		fuelBar.setProgress(0.5);
+
+		testMalla test = new testMalla();
+		GenericLinkedList<Item> items = test.main();
+
+		GenericNode<Item> actual = items.getHead();
+		while (actual != null) {
+			Item data = actual.getData();
+			System.out.println("("+data.getType()+")");
+			if (data.getType() == ItemType.tronTrail) {
+				System.out.println("("+data.getIndexI()+", "+data.getIndexJ()+")");
+				ControllerFacade.getInstance().getMatrix().setEstela(data.getOwner().value, data.getIndexI(), data.getIndexJ());
+			}
+			actual = actual.getNext();
+			System.out.println(actual);
+		}
+		System.out.println(items.getHead().getData().getType());
+
 
 	}
 

@@ -13,7 +13,7 @@ import java.net.Socket;
 
 public class testMalla {
 
-	public static GenericLinkedList<Item> main(String[] args) {
+	public static GenericLinkedList<Item> main() {
 		// TODO Auto-generated method stub		
 		LinkedMatrix malla = new LinkedMatrix(10,10);
 		Item item1 = new Item(ItemType.bomb, 1, 0);
@@ -58,7 +58,7 @@ public class testMalla {
 		//System.out.println("hola");
 		OutputMessage mensaje = new OutputMessage(malla.getSimpleItemList(), player1);
 		String jsonMens = mensaje.toJson();
-		System.out.println(jsonMens);
+		//System.out.println(jsonMens);
 
 
 		try {
@@ -69,12 +69,12 @@ public class testMalla {
 
 
 		} catch (IOException e1) {
-			System.out.println(e1.getMessage());
+			//System.out.println(e1.getMessage());
 		}
 
 
 		String inputMessage = "{\"id\":9999,\"player\":{\"owner\":\"player1\",\"speed\":1,\"fuel\":97.0,\"currentDirection\":\"right\",\"extraTrail\":4,\"powerUpSteps\":0,\"trail\":{\"head\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":8,\"indexJ\":4,\"value\":0,\"owner\":\"player1\",\"head\":true},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":8,\"indexJ\":3,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":8,\"indexJ\":2,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":8,\"indexJ\":1,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":8,\"indexJ\":0,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":9,\"indexJ\":0,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":0,\"indexJ\":0,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":null}}}}}}},\"empty\":false,\"size\":7},\"isDead\":false,\"powerUpActivated\":false},\"itemList\":{\"head\":{\"data\":{\"type\":\"bomb\",\"indexI\":1,\"indexJ\":0,\"value\":0,\"owner\":null,\"head\":false},\"next\":{\"data\":{\"type\":\"bomb\",\"indexI\":1,\"indexJ\":1,\"value\":0,\"owner\":null,\"head\":false},\"next\":{\"data\":{\"type\":\"increaseTail\",\"indexI\":1,\"indexJ\":2,\"value\":6,\"owner\":null,\"head\":false},\"next\":{\"data\":{\"type\":\"increaseTail\",\"indexI\":1,\"indexJ\":3,\"value\":1,\"owner\":null,\"head\":false},\"next\":{\"data\":{\"type\":\"shield\",\"indexI\":2,\"indexJ\":1,\"value\":7,\"owner\":null,\"head\":false},\"next\":{\"data\":{\"type\":\"turbo\",\"indexI\":3,\"indexJ\":2,\"value\":10,\"owner\":null,\"head\":false},\"next\":{\"data\":{\"type\":\"fuel\",\"indexI\":5,\"indexJ\":3,\"value\":57,\"owner\":null,\"head\":false},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":8,\"indexJ\":0,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":8,\"indexJ\":1,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":8,\"indexJ\":2,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":8,\"indexJ\":3,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":8,\"indexJ\":4,\"value\":0,\"owner\":\"player1\",\"head\":true},\"next\":{\"data\":{\"type\":\"tronTrail\",\"indexI\":9,\"indexJ\":0,\"value\":0,\"owner\":\"player1\",\"head\":false},\"next\":null}}}}}}}}}}}}},\"empty\":false,\"size\":13}}";
-		System.out.println(inputMessage);
+		//System.out.println(inputMessage);
 		ObjectMapper mapper = new ObjectMapper(); // can reuse, share globally
 		OutputMessage newMessage = new OutputMessage();
 		// IMPORTANT
@@ -85,7 +85,7 @@ public class testMalla {
 			newMessage = mapper.readValue(inputMessage, OutputMessage.class);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			System.out.println(e.getMessage());
+			//System.out.println(e.getMessage());
 			//e.printStackTrace();
 		}
 		newMessage.getId();
