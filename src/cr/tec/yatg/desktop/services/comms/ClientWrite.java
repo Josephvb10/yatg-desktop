@@ -9,8 +9,8 @@ import java.io.PrintWriter;
  * Created by joseph on 10/2/16.
  */
 public class ClientWrite extends Thread {
-	BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
-	PrintWriter out;
+	final BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+	final PrintWriter out;
 
 	public ClientWrite(PrintWriter out) {
 		this.out = out;

@@ -6,7 +6,7 @@ import cr.tec.yatg.desktop.controllers.Matrix;
  * Created by joseph on 26/09/16.
  */
 public class ControllerFacade {
-	private static ControllerFacade ourInstance = new ControllerFacade();
+	private static final ControllerFacade ourInstance = new ControllerFacade();
 
 	private Matrix matrixController;
 

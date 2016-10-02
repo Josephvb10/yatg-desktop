@@ -10,9 +10,9 @@ import java.net.Socket;
  * Created by joseph on 10/2/16.
  */
 public class ServerRead extends Thread {
+	private final Socket socket;
+	private final String ip;
 	private String name;
-	private Socket socket;
-	private String ip;
 	private boolean running = true;
 
 	ServerRead(Socket socket) {

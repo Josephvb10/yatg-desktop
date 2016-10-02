@@ -6,8 +6,8 @@ import java.io.PrintWriter;
  * Created by joseph on 10/2/16.
  */
 public class PlayerArray {
+	private final PlayerArrayNodo head;
 	private int size = 0;
-	private PlayerArrayNodo head;
 
 	public PlayerArray() {
 		this.head = new PlayerArrayNodo();

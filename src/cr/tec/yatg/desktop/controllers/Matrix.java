@@ -12,11 +12,10 @@ import javafx.scene.shape.Rectangle;
  * Created by joseph on 22/09/16.
  */
 public class Matrix {
-	private static int size = 20;
-	private static int winSize = 680;
-	
+	private static final int size = 20;
 	@FXML
-	private static Pane matrix;
+	private static final Pane matrix;
+	private static int winSize = 680;
 
 	static void node_image () {
 		int i=0;

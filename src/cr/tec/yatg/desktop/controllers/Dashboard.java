@@ -21,21 +21,15 @@ import java.util.ArrayList;
 public class Dashboard {
 
 	@FXML
+	private final Matrix matrixController;
+	@FXML
+	private final Label serverIp;
+	@FXML
+	private final Label playerNum;
+	@FXML
+	private final ProgressBar fuelBar;
+	@FXML
 	private Pane dashboard;
-
-	@FXML
-	private Matrix matrixController;
-
-	@FXML
-	private Label serverIp;
-
-	@FXML
-	private Label playerNum;
-
-
-	@FXML
-	private ProgressBar fuelBar;
-
 
 	@FXML
 	protected void doSomething() throws Exception {
@@ -69,11 +63,10 @@ public class Dashboard {
 
 		ArrayList<Item> items = msg.getItemList();
 
-		for (int i = 0; i < items.size(); i++) {
-			Item data = items.get(i);
-			System.out.println("("+data.getType()+")");
+		for (Item data : items) {
+			System.out.println("(" + data.getType() + ")");
 			if (data.getType() == ItemType.tronTrail) {
-				System.out.println("("+data.getIndexI()+", "+data.getIndexJ()+")");
+				System.out.println("(" + data.getIndexI() + ", " + data.getIndexJ() + ")");
 				if (data.getFirst()) {
 					ControllerFacade.getInstance().getMatrix().setMoto(data.getOwner().value, data.getIndexI(), data.getIndexJ());
 				} else {

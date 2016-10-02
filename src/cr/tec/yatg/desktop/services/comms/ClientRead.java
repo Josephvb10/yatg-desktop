@@ -10,7 +10,7 @@ import java.net.Socket;
  * Created by joseph on 10/2/16.
  */
 public class ClientRead extends Thread {
-	private BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+	private final BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
 	private String serverIp;
 	private int serverPort;
 
