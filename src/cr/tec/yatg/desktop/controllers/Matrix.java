@@ -14,12 +14,26 @@ import javafx.scene.shape.Rectangle;
 public class Matrix {
 	private static int size = 20;
 	private static int winSize = 680;
-
-
+	
 	@FXML
-	private Pane matrix;
+	private static Pane matrix;
 
-	private Rectangle Square(Color color, int i, int j) {
+	static void node_image () {
+		int i=0;
+		while(i<=680){
+			int j=0;
+			while(j<=680){
+				Rectangle nodo = Square( null, i, j);
+				Image img = new Image("/cr/tec/yatg/desktop/resources/images/nodo1.png");
+				nodo.setFill(new ImagePattern(img));
+				matrix.getChildren().add(nodo);
+				j=j+20;
+			}
+			i=i+20;
+		}
+	}
+	
+	private static Rectangle Square(Color color, int i, int j) {
 		Rectangle square = new Rectangle();
 		square.setFill(color);
 
@@ -57,10 +71,7 @@ public class Matrix {
 				color = Color.WHITE;
 				break;
 		}
-		Rectangle moto = Square(color, i, j);
-		Image img = new Image("/cr/tec/yatg/desktop/resources/images/moto.png");
-		moto.setFill(new ImagePattern(img));
-		matrix.getChildren().add(moto);
+		 
 
 	}
 
