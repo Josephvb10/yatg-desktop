@@ -10,13 +10,9 @@ import java.net.Socket;
  * Created by joseph on 10/2/16.
  */
 public class ClientRead extends Thread {
-	BufferedReader in;
-	PrintWriter out;
-	BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
-	String serverIp;
-	int serverPort;
-	String line;
-	String userInput;
+	private BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+	private String serverIp;
+	private int serverPort;
 
 
 	@Override
@@ -27,11 +23,12 @@ public class ClientRead extends Thread {
 			configureIP();
 
 			Socket socket = new Socket(serverIp, serverPort);
-			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			out = new PrintWriter(socket.getOutputStream(), true);
+			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 			new ClientWrite(out).start();
 
 			// Process all messages from server, according to the protocol.
+			String line;
 			while ((line = in.readLine()) != null) {
 				System.out.println(line);
 
@@ -43,7 +40,7 @@ public class ClientRead extends Thread {
 
 	private void configureIP() throws IOException {
 		System.out.println("Ingrese la IP del servidor:");
-		userInput = stdIn.readLine();
+		String userInput = stdIn.readLine();
 		if (userInput != null) {
 			serverIp = userInput;
 		}

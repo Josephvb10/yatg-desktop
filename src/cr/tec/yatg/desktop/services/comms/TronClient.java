@@ -1,6 +1,7 @@
 package cr.tec.yatg.desktop.services.comms;
 
 /**
+ * Simplemente ejecuta el ClientRead lol
  * Created by joseph on 10/2/16.
  */
 public class TronClient {
