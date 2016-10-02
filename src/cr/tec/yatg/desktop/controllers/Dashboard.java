@@ -21,13 +21,13 @@ import java.util.ArrayList;
 public class Dashboard {
 
 	@FXML
-	private final Matrix matrixController;
+	private Matrix matrixController;
 	@FXML
-	private final Label serverIp;
+	private Label serverIp;
 	@FXML
-	private final Label playerNum;
+	private Label playerNum;
 	@FXML
-	private final ProgressBar fuelBar;
+	private ProgressBar fuelBar;
 	@FXML
 	private Pane dashboard;
 

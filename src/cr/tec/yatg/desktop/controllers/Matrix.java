@@ -14,7 +14,7 @@ import javafx.scene.shape.Rectangle;
 public class Matrix {
 	private static final int size = 20;
 	@FXML
-	private static final Pane matrix;
+	private static Pane matrix;
 	private static int winSize = 680;
 
 	static void node_image () {
