@@ -1,4 +1,4 @@
-package Structures;
+package cr.tec.yatg.desktop.structures;
 
 import java.util.Random;
 
@@ -38,6 +38,12 @@ public class Item implements Comparable<Item> {
 		this.owner = owner;
 	}
 
+	private static int randInt(int min, int max) {
+		Random rand = new Random();
+		int randomNum = rand.nextInt((max - min) + 1) + min;
+		return randomNum;
+	}
+
 	public int getValue() {
 		return value;
 	}
@@ -61,12 +67,6 @@ public class Item implements Comparable<Item> {
 		} else if (type == ItemType.turbo) {
 			setValue(randInt(1, 10));
 		}
-	}
-
-	private static int randInt(int min, int max) {
-		Random rand = new Random();
-		int randomNum = rand.nextInt((max - min) + 1) + min;
-		return randomNum;
 	}
 
 	@Override

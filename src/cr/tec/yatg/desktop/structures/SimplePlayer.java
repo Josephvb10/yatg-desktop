@@ -1,4 +1,4 @@
-package Structures;
+package cr.tec.yatg.desktop.structures;
 
 public class SimplePlayer {
 	private Player owner;

@@ -1,4 +1,4 @@
-package Structures;
+package cr.tec.yatg.desktop.structures;
 
 public class GenericQueue<T> extends GenericLinkedList<T> {
 	

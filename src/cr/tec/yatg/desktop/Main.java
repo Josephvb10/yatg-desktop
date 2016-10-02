@@ -13,7 +13,7 @@ public class Main extends Application {
 	}
 
 	public void start(Stage primaryStage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("resources/views/main.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("resources/views/Login.fxml"));
 		primaryStage.setTitle("YATG 1.0");
 		primaryStage.setScene(new Scene(root, 880, 680));
 		primaryStage.setResizable(false);

@@ -1,12 +1,11 @@
-package Structures;
-import java.util.Random;
+package cr.tec.yatg.desktop.structures;
 
-import Structures.Item;
+import java.util.Random;
 
 
 public class Troncycle {
 	/**
-	 * 
+	 *
 	 */
 	private Player owner;
 	private int speed;
@@ -17,13 +16,13 @@ public class Troncycle {
 	private ItemsPriorityQueue itemsQueue = new ItemsPriorityQueue();
 	private boolean isDead, powerUpActivated;
 
-	
+
 	public Troncycle() {
 		super();
 	}
 
 
-	public Troncycle(Player owner,int indexI, int indexJ) {
+	public Troncycle(Player owner, int indexI, int indexJ) {
 		this.isDead = false;
 		this.powerUpActivated = false;
 		this.owner = owner;
@@ -33,32 +32,30 @@ public class Troncycle {
 		this.extraTrail = 2;
 		this.powerUpSteps = 0;
 		this.addHead(indexI, indexJ);
-		;
 
 	}
-	
-	
-	public void setPowerUpSteps(int value){
-		this.powerUpSteps=value;
-	}
-	
-	public int getPowerUpSteps(){
+
+	public int getPowerUpSteps() {
 		return this.powerUpSteps;
 	}
-	
-	public void setPowerUpActivated(boolean value){
-		this.powerUpActivated=value;
+
+	public void setPowerUpSteps(int value) {
+		this.powerUpSteps = value;
 	}
-	
-	public boolean getPowerUpActivated(){
+
+	public boolean getPowerUpActivated() {
 		return this.powerUpActivated;
 	}
-	
-	public boolean getIsDead(){
+
+	public void setPowerUpActivated(boolean value) {
+		this.powerUpActivated = value;
+	}
+
+	public boolean getIsDead() {
 		return this.isDead;
 	}
-	
-	public void setIsDead(boolean value){
+
+	public void setIsDead(boolean value) {
 		this.isDead = value;
 	}
 
@@ -80,26 +77,25 @@ public class Troncycle {
 	}
 
 	public void addFuel(int fuel) {
-		if((this.fuel + fuel) > 100){
+		if ((this.fuel + fuel) > 100) {
 			this.fuel = 100;
+		} else {
+			this.fuel += fuel;
 		}
-		else{
-			this.fuel +=fuel;
-		}	
 	}
 
 	public int getSpeed() {
 		return speed;
 	}
-	
-	public int generateSpeed() {
-		Random rand = new Random();
-		int newSpeed = rand.nextInt(9)+1;
-		return newSpeed;
-	}
 
 	public void setSpeed(int speed) {
 		this.speed = speed;
+	}
+
+	public int generateSpeed() {
+		Random rand = new Random();
+		int newSpeed = rand.nextInt(9) + 1;
+		return newSpeed;
 	}
 
 	public Direction getCurrentDirection() {
@@ -109,6 +105,7 @@ public class Troncycle {
 	public void setCurrentDirection(Direction currentDirection) {
 		this.currentDirection = currentDirection;
 	}
+
 	public GenericLinkedList<Item> getTrail() {
 		return trail;
 	}
@@ -136,15 +133,15 @@ public class Troncycle {
 	public Item deleteTail() {
 		Item deleted = null;
 
-			if (getExtraTrail() > 0) {
-				addExtraTrail(-1);
-			} else {
-				deleted = trail.deleteLast();
-			}
-		
+		if (getExtraTrail() > 0) {
+			addExtraTrail(-1);
+		} else {
+			deleted = trail.deleteLast();
+		}
+
 		return deleted;
 	}
-	
+
 	public void addHead(int indexI, int indexJ) {
 		Item newItem = new Item(ItemType.tronTrail, indexI, indexJ, true, this.owner);
 		addHead(newItem);
@@ -152,12 +149,13 @@ public class Troncycle {
 
 	public void addHead(Item item) {
 		GenericNode<Item> newHead = new GenericNode<>(item);
-		if(!trail.isEmpty()){
-		trail.getHead().getData().setFirst(false);}
+		if (!trail.isEmpty()) {
+			trail.getHead().getData().setFirst(false);
+		}
 		trail.setHead(newHead);
 	}
 
-	public void addItem(Item newItem){
+	public void addItem(Item newItem) {
 		itemsQueue.add(newItem);
 	}
 
@@ -165,26 +163,26 @@ public class Troncycle {
 		if (!itemsQueue.isEmpty()) {
 			Item itemToUse = itemsQueue.poll();
 			switch (itemToUse.getType()) {
-			case bomb:
+				case bomb:
 
-				break;
-			case fuel:
-				this.addFuel(itemToUse.getValue());
+					break;
+				case fuel:
+					this.addFuel(itemToUse.getValue());
 
-				break;
-			case increaseTail:
-				this.addExtraTrail(itemToUse.getValue());
+					break;
+				case increaseTail:
+					this.addExtraTrail(itemToUse.getValue());
 
-				break;
-			case shield:
+					break;
+				case shield:
 
-				break;
-			case turbo:
+					break;
+				case turbo:
 
-				break;
+					break;
 
-			default:
-				break;
+				default:
+					break;
 			}
 		}
 

@@ -1,6 +1,6 @@
-package cr.tec.yatg.desktop.services.Structures.Malla;
+package cr.tec.yatg.desktop.structures.Malla;
 
-import cr.tec.yatg.desktop.services.Structures.*;
+import cr.tec.yatg.desktop.structures.*;
 
 public class LinkedMatrix {
 	private Nodo head;
