@@ -1,4 +1,4 @@
-package cr.tec.yatg.desktop.services.Structures;
+package Structures;
 
 public class ItemsPriorityQueue extends GenericLinkedList<Item> {
 	@Override

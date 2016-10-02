@@ -1,9 +1,13 @@
-package cr.tec.yatg.desktop.services.Structures;
+package Structures;
 import java.util.Random;
 
+import Structures.Item;
 
 
 public class Troncycle {
+	/**
+	 * 
+	 */
 	private Player owner;
 	private int speed;
 	private double fuel;
@@ -149,7 +153,7 @@ public class Troncycle {
 	public void addHead(Item item) {
 		GenericNode<Item> newHead = new GenericNode<>(item);
 		if(!trail.isEmpty()){
-		trail.getHead().getData().setIsHead(false);}
+		trail.getHead().getData().setFirst(false);}
 		trail.setHead(newHead);
 	}
 

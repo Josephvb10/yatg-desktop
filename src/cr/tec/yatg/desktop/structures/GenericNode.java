@@ -1,6 +1,12 @@
-package cr.tec.yatg.desktop.services.Structures;
+package Structures;
 
-public class GenericNode<T> {
+import java.io.Serializable;
+
+public class GenericNode<T> implements Serializable  {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5356394639328185524L;
 	private T data;
 	private GenericNode<T> next;
 	

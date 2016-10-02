@@ -1,4 +1,4 @@
-package cr.tec.yatg.desktop.services.Structures;
+package Structures;
 
 public class GenericStack<T> {
 
