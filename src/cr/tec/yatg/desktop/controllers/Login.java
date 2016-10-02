@@ -74,7 +74,6 @@ public class Login {
 					stage.setTitle("Yet Another Tron Game");
 					stage.setResizable(false);
 					stage.setScene(new Scene(mainScreen));
-
 					Stage mainStage = (Stage) loginButton.getScene().getWindow();
 					mainStage.close();
 
