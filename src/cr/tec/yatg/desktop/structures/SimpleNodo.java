@@ -1,4 +1,4 @@
-package Structures;
+package cr.tec.yatg.desktop.structures;
 
 public class SimpleNodo {
 	private SimpleNodo next;
@@ -23,11 +23,18 @@ public class SimpleNodo {
 		this.xr = xr;
 		this.yr = yr;
 	}
-	public void setNodeType(String nodeType){this.nodeType = nodeType;}
+
 	public String getNodeType(){return this.nodeType;}
+
+	public void setNodeType(String nodeType) {
+		this.nodeType = nodeType;
+	}
 	
-	public void setNext(SimpleNodo nodo){this.next = nodo;}
 	public SimpleNodo getNext(){return this.next;}
+
+	public void setNext(SimpleNodo nodo) {
+		this.next = nodo;
+	}
 	
 
 }

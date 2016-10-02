@@ -43,10 +43,6 @@ public class Login {
 		return true;
 	}
 
-	private static boolean validIp(final String ip) {
-		return PATTERN.matcher(ip).matches();
-	}
-
 	@FXML
 	private void pressLogin() {
 		try {
@@ -55,7 +51,7 @@ public class Login {
 			playerIp = getIp.getText().trim();
 
 
-			if (playerIp.length() != 0 && checkPort.length() != 0 && playerUsername.length() != 0 && isNumeric(checkPort) && validIp(playerIp)) {
+			if (playerIp.length() != 0 && checkPort.length() != 0 && playerUsername.length() != 0 && isNumeric(checkPort) && com.sun.org.apache.xerces.internal.util.URI.isWellFormedIPv4Address(playerIp)) {
 				try {
 					playerPort = Integer.parseInt(checkPort);
 				} catch (Exception e) {

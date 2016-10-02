@@ -1,18 +1,18 @@
 package cr.tec.yatg.desktop.controllers;
 
 import cr.tec.yatg.desktop.services.ControllerFacade;
-import cr.tec.yatg.desktop.services.Runner;
-import cr.tec.yatg.desktop.services.Structures.GenericLinkedList;
-import cr.tec.yatg.desktop.services.Structures.GenericNode;
-import cr.tec.yatg.desktop.services.Structures.Item;
-import cr.tec.yatg.desktop.services.Structures.ItemType;
+import cr.tec.yatg.desktop.services.comms.OutputMessage;
 import cr.tec.yatg.desktop.services.testMalla;
+import cr.tec.yatg.desktop.structures.Item;
+import cr.tec.yatg.desktop.structures.ItemType;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+
+import java.util.ArrayList;
 
 /**
  * Main GUI controller
@@ -39,6 +39,7 @@ public class Dashboard {
 
 	@FXML
 	protected void doSomething() throws Exception {
+		ControllerFacade.getInstance().getMatrix().clean();
 		/*Random rand = new Random(System.currentTimeMillis());
 		int r = rand.nextInt(255);
 		int g = rand.nextInt(255);
@@ -64,20 +65,23 @@ public class Dashboard {
 		fuelBar.setProgress(0.5);
 
 		testMalla test = new testMalla();
-		GenericLinkedList<Item> items = test.main();
+		OutputMessage msg = test.main();
 
-		GenericNode<Item> actual = items.getHead();
-		while (actual != null) {
-			Item data = actual.getData();
+		ArrayList<Item> items = msg.getItemList();
+
+		for (int i = 0; i < items.size(); i++) {
+			Item data = items.get(i);
 			System.out.println("("+data.getType()+")");
 			if (data.getType() == ItemType.tronTrail) {
 				System.out.println("("+data.getIndexI()+", "+data.getIndexJ()+")");
-				ControllerFacade.getInstance().getMatrix().setEstela(data.getOwner().value, data.getIndexI(), data.getIndexJ());
+				if (data.getFirst()) {
+					ControllerFacade.getInstance().getMatrix().setMoto(data.getOwner().value, data.getIndexI(), data.getIndexJ());
+				} else {
+					ControllerFacade.getInstance().getMatrix().setEstela(data.getOwner().value, data.getIndexI(), data.getIndexJ());
+
+				}
 			}
-			actual = actual.getNext();
-			System.out.println(actual);
 		}
-		System.out.println(items.getHead().getData().getType());
 
 
 	}
