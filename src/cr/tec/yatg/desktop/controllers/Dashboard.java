@@ -1,6 +1,7 @@
 package cr.tec.yatg.desktop.controllers;
 
 import cr.tec.yatg.desktop.services.ControllerFacade;
+import cr.tec.yatg.desktop.services.comms.ClientRead;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -36,7 +37,7 @@ public class Dashboard {
 
 		fuelBar.setProgress(0.5);
 
-		//new ClientRead().start();
+		new ClientRead().start();
 
 
 	}

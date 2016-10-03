@@ -12,12 +12,12 @@ import javafx.scene.shape.Rectangle;
  * Created by joseph on 22/09/16.
  */
 public class Matrix {
-	private static final int size = 20;
+	private int size = 20;
 	@FXML
-	private static Pane matrix;
-	private static int winSize = 680;
+	private Pane matrix;
+	private int winSize = 680;
 
-	static void node_image () {
+	private void node_image() {
 		int i=0;
 		while(i<=680){
 			int j=0;
@@ -32,7 +32,7 @@ public class Matrix {
 		}
 	}
 
-	private static Rectangle Square(Color color, int i, int j) {
+	private Rectangle Square(Color color, int i, int j) {
 		Rectangle square = new Rectangle();
 		square.setFill(color);
 
