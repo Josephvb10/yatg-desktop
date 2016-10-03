@@ -27,7 +27,7 @@ public class ServerWrite extends Thread {
 					}
 				} else {
 					System.out.println("Server dije: " + userInput);
-					TronServer.players.sendAll("Servidor dijo: " + userInput);
+					TronServer.players.sendAll(userInput);
 				}
 			}
 		}

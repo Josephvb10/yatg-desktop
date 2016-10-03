@@ -30,6 +30,7 @@ public class ClientRead extends Thread {
 			// Process all messages from server, according to the protocol.
 			String line;
 			while ((line = in.readLine()) != null) {
+				JsonConverter.getInstance().doJson(line);
 				System.out.println(line);
 
 			}

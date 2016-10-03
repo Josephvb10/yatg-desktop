@@ -31,7 +31,7 @@ public class Matrix {
 			i=i+20;
 		}
 	}
-	
+
 	private static Rectangle Square(Color color, int i, int j) {
 		Rectangle square = new Rectangle();
 		square.setFill(color);
@@ -70,7 +70,7 @@ public class Matrix {
 				color = Color.WHITE;
 				break;
 		}
-		 
+
 
 	}
 
