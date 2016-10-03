@@ -2,7 +2,6 @@ package cr.tec.yatg.desktop.structures;
 
 import java.util.Random;
 
-
 public class Troncycle {
 	/**
 	 *
@@ -105,7 +104,6 @@ public class Troncycle {
 	public void setCurrentDirection(Direction currentDirection) {
 		this.currentDirection = currentDirection;
 	}
-
 	public GenericLinkedList<Item> getTrail() {
 		return trail;
 	}
@@ -187,5 +185,16 @@ public class Troncycle {
 		}
 
 	}
+
+
+	public ItemsPriorityQueue getItemsQueue() {
+		return itemsQueue;
+	}
+
+
+	public void setItemsQueue(ItemsPriorityQueue itemsQueue) {
+		this.itemsQueue = itemsQueue;
+	}
+
 
 }

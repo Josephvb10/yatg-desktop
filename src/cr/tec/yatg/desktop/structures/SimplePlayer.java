@@ -1,5 +1,7 @@
 package cr.tec.yatg.desktop.structures;
 
+import java.util.ArrayList;
+
 public class SimplePlayer {
 	private Player owner;
 	private int speed;
@@ -7,14 +9,14 @@ public class SimplePlayer {
 	private Direction currentDirection;
 	private int extraTrail, powerUpSteps;
 	private boolean isDead, powerUpActivated;
-	
-	
+	private ArrayList<Item> ItemsPriorityQueue;
+
 	public SimplePlayer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public SimplePlayer(Player owner, int speed, double fuel, Direction currentDirection, int extraTrail,
-			int powerUpSteps, boolean isDead, boolean powerUpActivated) {
+	                    int powerUpSteps, boolean isDead, boolean powerUpActivated) {
 		super();
 		this.owner = owner;
 		this.speed = speed;
@@ -72,6 +74,14 @@ public class SimplePlayer {
 	}
 	public void setPowerUpActivated(boolean powerUpActivated) {
 		this.powerUpActivated = powerUpActivated;
+	}
+
+	public ArrayList<Item> getItemsPriorityQueue() {
+		return ItemsPriorityQueue;
+	}
+
+	public void setItemsPriorityQueue(ArrayList<Item> itemsPriorityQueue) {
+		ItemsPriorityQueue = itemsPriorityQueue;
 	}
 
 

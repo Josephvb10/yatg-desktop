@@ -5,6 +5,7 @@ import cr.tec.yatg.desktop.structures.*;
 
 import java.util.ArrayList;
 
+
 public class OutputMessage {
 	private static int nextid = 0;
 	/**
@@ -13,8 +14,7 @@ public class OutputMessage {
 	private int id;
 	private SimplePlayer player;
 	private ArrayList<Item> itemList;
-	
-	
+
 
 	public OutputMessage() {
 		super();
@@ -61,6 +61,7 @@ public class OutputMessage {
 
 	public void importPlayer(Troncycle player) {
 		SimplePlayer simplePlayer = new SimplePlayer(player.getOwner(), player.getSpeed(), player.getFuel(), player.getCurrentDirection(), player.getExtraTrail(), player.getPowerUpSteps(), player.getIsDead(), player.getPowerUpActivated());
+		importItemsPriorityQueue(player.getItemsQueue());
 		setPlayer(simplePlayer);
 
 	}
@@ -87,6 +88,18 @@ public class OutputMessage {
 		this.itemList = newItemList;
 	}
 
+	public void importItemsPriorityQueue(ItemsPriorityQueue itemsPriorityQueue) {
+		GenericNode<Item> current = itemsPriorityQueue.getHead();
+		ArrayList<Item> newItemsPriorityQueue = new ArrayList<>();
+		while (current != null) {
+			newItemsPriorityQueue.add(current.getData());
+
+			current = current.getNext();
+
+		}
+		this.itemList = newItemsPriorityQueue;
+	}
+
 	public String toJson() {
 		String messageJson = JsonConverter.objectToJson(this);
 		return messageJson;
@@ -94,7 +107,6 @@ public class OutputMessage {
 
 
 }
-
 
 
 
