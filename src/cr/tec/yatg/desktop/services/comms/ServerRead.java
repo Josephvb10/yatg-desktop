@@ -50,8 +50,8 @@ public class ServerRead extends Thread {
 			// Este loop se ejecuta al inicio antes de que se una
 			while (true) {
 				line = in.readLine();
-				if (line.equals("PING")) {
-					out.println("PONG");
+				if (line.equals("TECPING")) {
+					out.println("TECPONG");
 				}
 
 				if (line.substring(0, 2).equals("%J")) {

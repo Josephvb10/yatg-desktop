@@ -20,6 +20,7 @@ public class ServerWrite extends Thread {
 				TronServer.getClients().sendAll(json);
 				if (i == 29) {
 					i = 1;
+					TronServer.getClients().sendAll("%K");
 				}
 				try {
 					Thread.sleep(40);
