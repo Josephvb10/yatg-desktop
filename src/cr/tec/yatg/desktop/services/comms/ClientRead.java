@@ -14,13 +14,16 @@ public class ClientRead extends Thread {
 	private String serverIp;
 	private int serverPort;
 
+	public ClientRead(String ip, int port) {
+		this.serverIp = ip;
+		this.serverPort = port;
+	}
 
 	@Override
 	public void run() {
 		try {
 
 			// Make connection and initialize streams
-			configureIP();
 
 			Socket socket = new Socket(serverIp, serverPort);
 			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -30,7 +33,8 @@ public class ClientRead extends Thread {
 			// Process all messages from server, according to the protocol.
 			String line;
 			while ((line = in.readLine()) != null) {
-				JsonConverter.getInstance().setJson(line);
+				JsonParser.getInstance().parseJson(line);
+				// TODO: 10/3/16 ESTO HAY QUE QUITARLO Lol
 				System.out.println(line);
 
 			}

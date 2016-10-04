@@ -2,6 +2,9 @@ package cr.tec.yatg.desktop.controllers;
 
 import cr.tec.yatg.desktop.services.ControllerFacade;
 import cr.tec.yatg.desktop.services.comms.ClientRead;
+import cr.tec.yatg.desktop.services.comms.JsonParser;
+import cr.tec.yatg.desktop.structures.SimplePlayer;
+import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,6 +32,25 @@ public class Dashboard implements Initializable {
 	@FXML
 	private ProgressBar fuelBar;
 
+	private SimplePlayer playerData;
+
+
+	@Override
+	public void initialize(URL location, ResourceBundle resource) {
+		ControllerFacade.getInstance().setMatrix(matrixController);
+
+		new ClientRead("localhost", 8081).start();
+
+
+		new AnimationTimer() {
+			public void handle(long currentNanoTime) {
+				playerData = JsonParser.getInstance().getPlayerData();
+				if (playerData != null) {
+					refreshFuel();
+				}
+			}
+		}.start();
+	}
 
 	@FXML
 	protected void doSomething() throws Exception {
@@ -44,7 +66,6 @@ public class Dashboard implements Initializable {
 
 
 		//new PaintThread().start();
-		new ClientRead().start();
 
 
 	}
@@ -55,8 +76,10 @@ public class Dashboard implements Initializable {
 		System.exit(0);
 	}
 
-	@Override
-	public void initialize(URL location, ResourceBundle resource) {
-		ControllerFacade.getInstance().setMatrix(matrixController);
+	public void refreshFuel() {
+		fuelBar.setProgress(playerData.getFuel() / 100);
+
 	}
+
+
 }

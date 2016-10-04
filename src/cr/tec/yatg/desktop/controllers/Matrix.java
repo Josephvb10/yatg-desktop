@@ -1,6 +1,6 @@
 package cr.tec.yatg.desktop.controllers;
 
-import cr.tec.yatg.desktop.services.comms.JsonConverter;
+import cr.tec.yatg.desktop.services.comms.JsonParser;
 import cr.tec.yatg.desktop.structures.Item;
 import cr.tec.yatg.desktop.structures.ItemType;
 import javafx.animation.AnimationTimer;
@@ -31,12 +31,15 @@ public class Matrix implements Initializable {
 
 	private GraphicsContext gc;
 
+	private ArrayList<Item> matrixData;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		gc = gameCanvas.getGraphicsContext2D();
 
 		new AnimationTimer() {
 			public void handle(long currentNanoTime) {
+				matrixData = JsonParser.getInstance().getPlayerItems();
 				clean();
 				refreshJson();
 			}
@@ -45,10 +48,9 @@ public class Matrix implements Initializable {
 	}
 
 	private void refreshJson() {
-		ArrayList<Item> items = JsonConverter.getInstance().items;
-		if (items != null) {
+		if (matrixData != null) {
 			System.out.println("no es null");
-			for (Item data : items) {
+			for (Item data : matrixData) {
 				System.out.println("Hay item");
 				System.out.println("(" + data.getType() + ")");
 				if (data.getType() == ItemType.tronTrail) {

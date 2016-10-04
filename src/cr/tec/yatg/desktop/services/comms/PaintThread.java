@@ -16,7 +16,7 @@ public class PaintThread extends Thread {
 			Platform.runLater(() -> {
 						ControllerFacade.getInstance().getMatrix().clean();
 						System.out.println("Voy a graficar a    jajajajajaja");
-						ArrayList<Item> items = JsonConverter.getInstance().items;
+				ArrayList<Item> items = JsonParser.getInstance().getPlayerItems();
 						if (items != null) {
 							System.out.println("no es null");
 							for (Item data : items) {

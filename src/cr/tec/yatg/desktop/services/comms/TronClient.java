@@ -6,6 +6,6 @@ package cr.tec.yatg.desktop.services.comms;
  */
 public class TronClient {
 	public static void main(String[] args) {
-		new ClientRead().start();
+		new ClientRead("localhost", 8081).start();
 	}
 }
