@@ -21,8 +21,8 @@ public class Runner implements Runnable {
 	public void run() {
 		System.out.println("Running " + threadName);
 		try {
-			for (int i = 1; i < 40; i++) {
-				for (int j = 1; j < 40; j++) {
+			for (int i = 0; i <= 34; i++) {
+				for (int j = 0; j <= 34; j++) {
 					final int fi = i;
 					final int fj = j;
 					System.out.println("(" + fi + ", " + fj);
@@ -33,7 +33,7 @@ public class Runner implements Runnable {
 						ControllerFacade.getInstance().getMatrix().setEstela(fi, fi, fj + 2);
 						ControllerFacade.getInstance().getMatrix().setMoto(fi, fi, fj + 3);
 					});
-					Thread.sleep(35);
+					Thread.sleep(16);
 				}
 				//Dashboard.clean();
 				// Let the thread sleep for a while.

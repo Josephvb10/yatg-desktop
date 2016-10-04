@@ -1,51 +1,80 @@
 package cr.tec.yatg.desktop.controllers;
 
+import cr.tec.yatg.desktop.services.comms.JsonConverter;
+import cr.tec.yatg.desktop.structures.Item;
+import cr.tec.yatg.desktop.structures.ItemType;
+import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Rectangle;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 /**
  * Controller de la Matrix
  * Created by joseph on 22/09/16.
  */
-public class Matrix {
-	private int size = 20;
+public class Matrix implements Initializable {
+	private double size = 20;
 	@FXML
 	private Pane matrix;
 	private int winSize = 680;
 
-	private void node_image() {
-		int i=0;
-		while(i<=680){
-			int j=0;
-			while(j<=680){
-				Rectangle nodo = Square( null, i, j);
-				Image img = new Image("/cr/tec/yatg/desktop/resources/images/nodo1.png");
-				nodo.setFill(new ImagePattern(img));
-				matrix.getChildren().add(nodo);
-				j=j+20;
+	@FXML
+	private Canvas gameCanvas;
+
+	private GraphicsContext gc;
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		gc = gameCanvas.getGraphicsContext2D();
+
+		new AnimationTimer() {
+			public void handle(long currentNanoTime) {
+				clean();
+				refreshJson();
 			}
-			i=i+20;
+		}.start();
+
+	}
+
+	private void refreshJson() {
+		ArrayList<Item> items = JsonConverter.getInstance().items;
+		if (items != null) {
+			System.out.println("no es null");
+			for (Item data : items) {
+				System.out.println("Hay item");
+				System.out.println("(" + data.getType() + ")");
+				if (data.getType() == ItemType.tronTrail) {
+					System.out.println("(Tron trail recibida)");
+					if (data.getFirst()) {
+						setMoto(data.getOwner().value, data.getIndexI(), data.getIndexJ());
+					} else {
+						System.out.println("No es first");
+						setEstela(data.getOwner().value, data.getIndexI(), data.getIndexJ());
+
+					}
+				}
+			}
 		}
 	}
 
-	private Rectangle Square(Color color, int i, int j) {
-		Rectangle square = new Rectangle();
-		square.setFill(color);
 
-		square.setHeight(size);
-		square.setWidth(size);
+	private void drawImage(Image img, int i, int j) {
+		final double HEIGHT = img.getHeight();
+		final double WIDTH = img.getWidth();
 
-		square.setX((i - 1) * size);
-		square.setY((j - 1) * size);
+		gc.drawImage(img, size * i, size * j);
 
-		return square;
 	}
 
-	public void setMoto(int player, int i, int j) {
+	public void setMoto(int player, double i, double j) {
 		Color color;
 		switch (player) {
 			case 1:
@@ -70,9 +99,18 @@ public class Matrix {
 				color = Color.WHITE;
 				break;
 		}
+		//drawImage(new Image("/cr/tec/yatg/desktop/resources/images/moto.png"), i, j);
+		drawSquare(color, i, j);
+	}
 
+
+	private void drawSquare(Color color, double i, double j) {
+
+		gc.setFill(color);
+		gc.fillRect(i * size, j * size, size, size);
 
 	}
+
 
 	public void setEstela(int player, int i, int j) {
 		Color color;
@@ -100,11 +138,11 @@ public class Matrix {
 				break;
 		}
 
-		matrix.getChildren().add(Square(color, i, j));
+		drawSquare(color, i, j);
 	}
 
 	public void clean() {
-		matrix.getChildren().clear();
+		gc.clearRect(0, 0, winSize, winSize);
 	}
 
 	public void setBomba(int type) {

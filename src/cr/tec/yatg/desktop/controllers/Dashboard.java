@@ -2,19 +2,21 @@ package cr.tec.yatg.desktop.controllers;
 
 import cr.tec.yatg.desktop.services.ControllerFacade;
 import cr.tec.yatg.desktop.services.comms.ClientRead;
-import cr.tec.yatg.desktop.services.comms.PaintThread;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Main GUI controller
  * Created by joseph on 22/09/16.
  */
-public class Dashboard {
+public class Dashboard implements Initializable {
 
 	@FXML
 	private Pane dashboard;
@@ -30,7 +32,6 @@ public class Dashboard {
 
 	@FXML
 	protected void doSomething() throws Exception {
-		ControllerFacade.getInstance().getMatrix().clean();
 
 
 		serverIp.setText("192.168.1.0:8043");
@@ -38,7 +39,11 @@ public class Dashboard {
 
 		fuelBar.setProgress(0.5);
 
-		new PaintThread().start();
+		//matrixController.setMoto(2, 3, 5);
+		//matrixController.setEstela(2, 3, 6);
+
+
+		//new PaintThread().start();
 		new ClientRead().start();
 
 
@@ -50,8 +55,8 @@ public class Dashboard {
 		System.exit(0);
 	}
 
-
-	public void initialize(MouseEvent mouseEvent) {
+	@Override
+	public void initialize(URL location, ResourceBundle resource) {
 		ControllerFacade.getInstance().setMatrix(matrixController);
 	}
 }
