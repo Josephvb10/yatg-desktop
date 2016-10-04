@@ -1,5 +1,7 @@
 package cr.tec.yatg.desktop.services.comms;
 
+import cr.tec.yatg.desktop.services.ControllerFacade;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -26,8 +28,10 @@ public class ClientRead extends Thread {
 				while ((line = in.readLine()) != null) {
 					// Si el mensaje es un comando
 					if (line.substring(0, 1).equals("%")) {
-
-						// O si no es un JSON
+						if (line.substring(1, 1).equals("K")) {
+							TronClient.getInstance().stop();
+							ControllerFacade.getInstance().kicked();
+						}
 					} else {
 						JsonParser.getInstance().parseJson(line);
 					}
@@ -36,6 +40,7 @@ public class ClientRead extends Thread {
 
 				}
 			} catch (IOException e) {
+				ControllerFacade.getInstance().serverDead();
 				System.out.println("Se ha desconectado del servidor");
 			}
 		}

@@ -16,7 +16,7 @@ public class TronClient {
 	private BufferedReader in;
 	private PrintWriter out;
 	private Socket socket;
-	private ClientWrite write;
+	//private ClientWrite write;
 	private ClientRead read;
 	private boolean running = false;
 
@@ -70,8 +70,8 @@ public class TronClient {
 				if ((line = in.readLine()) != null) {
 					if (line.equals("OK")) {
 						this.running = true;
-						write = new ClientWrite(out);
-						write.start();
+						//write = new ClientWrite(out);
+						//write.start();
 						read = new ClientRead(in);
 						read.start();
 						return "OK";
@@ -94,5 +94,9 @@ public class TronClient {
 
 	public boolean isRunning() {
 		return running;
+	}
+
+	public void stop() {
+		this.running = false;
 	}
 }

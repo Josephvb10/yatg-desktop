@@ -21,7 +21,7 @@ public class Splash {
 	@FXML 
 	private void pressPlay() {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/views/Login.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/views/login.fxml"));
 			Parent mainScreen = fxmlLoader.load();
 			Stage stage = new Stage();
 			stage.initModality(Modality.APPLICATION_MODAL);

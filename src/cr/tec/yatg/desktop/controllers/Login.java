@@ -1,5 +1,6 @@
 package cr.tec.yatg.desktop.controllers;
 
+import cr.tec.yatg.desktop.services.comms.TronClient;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.regex.Pattern;
 
 /**
@@ -43,6 +45,45 @@ public class Login {
 		return true;
 	}
 
+	private void startGame() throws IOException {
+		Boolean game = TronClient.getInstance().connect(playerIp, playerPort);
+		if (!game) {
+			showAlert("Error", "Can't connect to server. Please verify the IP and port.");
+			return;
+		}
+
+		String joinMsg = TronClient.getInstance().joinIfCan("Joseph");
+		if (!joinMsg.equals("OK")) {
+			showAlert("Error", joinMsg);
+			return;
+		}
+
+		System.out.println("Entered Username: " + getUsername.getText());
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/views/main.fxml"));
+		Parent mainScreen = fxmlLoader.load();
+		Stage stage = new Stage();
+		stage.initModality(Modality.APPLICATION_MODAL);
+		stage.setTitle("Yet Another Tron Game");
+		stage.setResizable(false);
+		stage.setScene(new Scene(mainScreen));
+		Stage mainStage = (Stage) loginButton.getScene().getWindow();
+		mainStage.close();
+
+		stage.setOnCloseRequest(e -> {
+			Platform.exit();
+			System.exit(0);
+		});
+		stage.show();
+		TronClient.getInstance().send("%AU");
+	}
+
+	private void showAlert(String title, String msg) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle(title);
+		alert.setContentText(msg);
+		alert.showAndWait();
+	}
+
 	@FXML
 	private void pressLogin() {
 		try {
@@ -55,29 +96,10 @@ public class Login {
 				try {
 					playerPort = Integer.parseInt(checkPort);
 				} catch (Exception e) {
-					Alert alert = new Alert(AlertType.ERROR);
-					alert.setTitle("ERROR:");
-					alert.setHeaderText("Please fill the required data");
-					alert.setContentText("Example: \n	Username: HailHarambe69 \n	IP: 292.168.1.2 \n	Port: 9697 ");
-					alert.showAndWait();
+
 				}
 				if (0 <= playerPort & playerPort <= 9999) {
-					System.out.println("Entered Username: " + getUsername.getText());
-					FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/views/main.fxml"));
-					Parent mainScreen = fxmlLoader.load();
-					Stage stage = new Stage();
-					stage.initModality(Modality.APPLICATION_MODAL);
-					stage.setTitle("Yet Another Tron Game");
-					stage.setResizable(false);
-					stage.setScene(new Scene(mainScreen));
-					Stage mainStage = (Stage) loginButton.getScene().getWindow();
-					mainStage.close();
-
-					stage.setOnCloseRequest(e -> {
-						Platform.exit();
-						System.exit(0);
-					});
-					stage.show();
+					startGame();
 				} else {
 					Alert alert = new Alert(AlertType.ERROR);
 					alert.setTitle("ERROR:");

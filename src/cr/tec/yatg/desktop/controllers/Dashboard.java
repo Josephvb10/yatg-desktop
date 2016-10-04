@@ -2,12 +2,12 @@ package cr.tec.yatg.desktop.controllers;
 
 import cr.tec.yatg.desktop.services.ControllerFacade;
 import cr.tec.yatg.desktop.services.comms.JsonParser;
-import cr.tec.yatg.desktop.services.comms.TronClient;
 import cr.tec.yatg.desktop.structures.SimplePlayer;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.Pane;
@@ -26,6 +26,8 @@ public class Dashboard implements Initializable {
 	@FXML
 	private Matrix matrixController;
 	@FXML
+	private Dashboard dashboardController;
+	@FXML
 	private Label serverIp;
 	@FXML
 	private Label playerNum;
@@ -38,13 +40,9 @@ public class Dashboard implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resource) {
 		ControllerFacade.getInstance().setMatrix(matrixController);
+		ControllerFacade.getInstance().setDashboard(dashboardController);
 
-		//new ClientRead("localhost", 8081).start();
 
-		System.out.println(TronClient.getInstance().connect("localhost", 8081));
-		System.out.println(TronClient.getInstance().joinIfCan("Joseph"));
-
-		TronClient.getInstance().send("%AU");
 
 
 		new AnimationTimer() {
@@ -84,6 +82,20 @@ public class Dashboard implements Initializable {
 	public void refreshFuel() {
 		fuelBar.setProgress(playerData.getFuel() / 100);
 
+	}
+
+	public void kicked() {
+		Alert alert = new Alert(Alert.AlertType.ERROR);
+		alert.setTitle("You have been kicked!");
+		alert.setHeaderText("The server has kicked you from the game.");
+		alert.showAndWait();
+	}
+
+	public void serverDead() {
+		Alert alert = new Alert(Alert.AlertType.ERROR);
+		alert.setTitle("The server is gone");
+		alert.setContentText("The server has disconnected.");
+		alert.showAndWait();
 	}
 
 
