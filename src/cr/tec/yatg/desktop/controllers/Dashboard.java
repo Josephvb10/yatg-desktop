@@ -1,8 +1,8 @@
 package cr.tec.yatg.desktop.controllers;
 
 import cr.tec.yatg.desktop.services.ControllerFacade;
-import cr.tec.yatg.desktop.services.comms.ClientRead;
 import cr.tec.yatg.desktop.services.comms.JsonParser;
+import cr.tec.yatg.desktop.services.comms.TronClient;
 import cr.tec.yatg.desktop.structures.SimplePlayer;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
@@ -39,7 +39,12 @@ public class Dashboard implements Initializable {
 	public void initialize(URL location, ResourceBundle resource) {
 		ControllerFacade.getInstance().setMatrix(matrixController);
 
-		new ClientRead("localhost", 8081).start();
+		//new ClientRead("localhost", 8081).start();
+
+		System.out.println(TronClient.getInstance().connect("localhost", 8081));
+		System.out.println(TronClient.getInstance().joinIfCan("Joseph"));
+
+		TronClient.getInstance().send("%AU");
 
 
 		new AnimationTimer() {

@@ -7,29 +7,23 @@ import java.util.Enumeration;
  * Created by joseph on 10/2/16.
  */
 public class TronServer {
-	public static final PlayerArray players = new PlayerArray();
-	private static final int PORT = 8081;
+	private static final PlayerArray clients = new PlayerArray();
+	private static TronServer ourInstance = new TronServer();
+	private int PORT;
+
+	private TronServer() {
+	}
+
+	public static TronServer getInstance() {
+		return ourInstance;
+	}
 
 	public static void main(String[] args) {
+		TronServer.getInstance().start(8081);
+	}
 
-		try {
-
-			// TODO: 10/2/16 Mostrar la IP visualmente
-			System.out.println("IP del server: " + getIP());
-
-			new ServerWrite().start();
-
-			try (ServerSocket listener = new ServerSocket(PORT)) {
-				while (true) {
-					System.out.println("Escuchando clientes");
-					new ServerRead(listener.accept()).start();
-				}
-			}
-		} catch (Exception e) {
-			// TODO: 10/2/16 Agregar un mensaje visual para el error cuando no puede abrir el server
-			System.out.println("Error al abrir el socket");
-		}
-
+	public static PlayerArray getClients() {
+		return clients;
 	}
 
 	private static String getIP() {
@@ -54,5 +48,28 @@ public class TronServer {
 		} catch (SocketException ignored) {
 		}
 		return ip;
+	}
+
+	public void start(int PORT) {
+		this.PORT = PORT;
+
+
+		try {
+			// TODO: 10/2/16 Mostrar la IP visualmente
+			System.out.println("IP del server: " + getIP());
+
+			new ServerWrite().start();
+
+			try (ServerSocket listener = new ServerSocket(PORT)) {
+				System.out.println("Servidor iniciado");
+				while (true) {
+					new ServerRead(listener.accept()).start();
+				}
+			}
+		} catch (Exception e) {
+			// TODO: 10/2/16 Agregar un mensaje visual para el error cuando no puede abrir el server
+			System.out.println("Error al abrir el socket");
+		}
+
 	}
 }

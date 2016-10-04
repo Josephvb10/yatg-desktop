@@ -48,13 +48,19 @@ public class PlayerArray {
 
 
 	public void remove(int i) {
-		get(i).anulate();
-		this.size--;
+		PlayerArrayNodo toRemove = get(i);
+		if (toRemove != null) {
+			toRemove.anulate();
+			this.size--;
+		}
 	}
 
 	public void remove(String name) {
-		get(name).anulate();
-		this.size--;
+		PlayerArrayNodo toRemove = get(name);
+		if (toRemove != null) {
+			toRemove.anulate();
+			this.size--;
+		}
 	}
 
 	public int insertAvailable(String name, PrintWriter out) {
@@ -89,16 +95,21 @@ public class PlayerArray {
 	}
 
 	public void sendTo(int i, String msg) {
-		PrintWriter actual = get(i).getOut();
-		actual.println(msg);
-		actual.flush();
-
+		PlayerArrayNodo actual = get(i);
+		if (actual != null) {
+			PrintWriter client = actual.getOut();
+			client.println(msg);
+			client.flush();
+		}
 	}
 
 	public void sendTo(String name, String msg) {
-		PrintWriter actual = get(name).getOut();
-		actual.println(msg);
-		actual.flush();
+		PlayerArrayNodo actual = get(name);
+		if (actual != null) {
+			PrintWriter client = actual.getOut();
+			client.println(msg);
+			client.flush();
+		}
 	}
 
 	public boolean contains(String name) {

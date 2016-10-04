@@ -10,96 +10,94 @@ import java.net.Socket;
  * Created by joseph on 10/2/16.
  */
 public class ServerRead extends Thread {
-	private final Socket socket;
-	private final String ip;
+	private Socket socket;
+	private String ip;
+	private BufferedReader in;
+	private PrintWriter out;
 	private String name;
 	private boolean running = true;
+	private boolean joined = false;
 
 	ServerRead(Socket socket) {
-		this.socket = socket;
-		this.ip = socket.getRemoteSocketAddress().toString();
-		System.out.println("Cliente " + ip + " conectado");
+		try {
+			this.socket = socket;
+			this.ip = socket.getRemoteSocketAddress().toString();
+			this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			this.out = new PrintWriter(socket.getOutputStream(), true);
+			System.out.println("Cliente " + ip + " se intenta conectar");
+		} catch (IOException e) {
+			System.out.println("Ha ocurrido un error al intentar conectarse con " + ip);
+			this.running = false;
+			Thread.currentThread().interrupt();
+		}
+	}
+
+
+	private void addPlayer() {
+		synchronized (TronServer.getClients()) {
+			if (!TronServer.getClients().contains(name)) {
+				TronServer.getClients().insertAvailable(name, out);
+			}
+		}
+		System.out.println("Cliente " + ip + " se ha unido al juego y se llama " + name);
+		System.out.println("Actualmente hay " + TronServer.getClients().getSize() + " clientes conectados");
 	}
 
 	public void run() {
 		try {
-			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+			String line;
 
-			if (TronServer.players.getSize() >= 4) {
-				System.out.println("Cliente removido. Ya hay más de 4");
-				out.println("Lo siento. Este servidor ya está lleno");
-				Thread.currentThread().interrupt();
-				running = false;
-				return;
-			}
-
-
-
-
-			// Este while es curioso, no se ejecuta por siempre, pero hasta que responda el nombre
+			// Este loop se ejecuta al inicio antes de que se una
 			while (true) {
-				out.println("Escriba su nombre");
-				name = in.readLine();
-				if (name == null) {
-					return;
+				line = in.readLine();
+				if (line.equals("PING")) {
+					out.println("PONG");
 				}
 
-				if (TronServer.players.contains(name)) {
-					out.println("Ese nombre ya está en uso. Por favor elige otro.");
-					name = null;
-					out.println("Escriba su nombre");
-					name = in.readLine();
-					if (name == null) {
-						return;
-					}
-				}
+				if (line.substring(0, 2).equals("%J")) {
+					if (TronServer.getClients().getSize() >= 4) {
+						System.out.println("Cliente removido. Ya hay más de 4");
+						out.println("%ELo sentimos. Este servidor ya está lleno.");
+						Thread.currentThread().interrupt();
+						running = false;
+						break;
+					} else if (TronServer.getClients().contains(name)) {
+						System.out.println("Cliente removido. Se intenta llamar " + name + " pero ya existe con ese nombre");
+						out.println("%EEse nombre ya está en uso, por favor elige otro.");
+						Thread.currentThread().interrupt();
+						running = false;
+						break;
 
-
-				if (TronServer.players.getSize() > 1) {
-					System.out.println("Cliente removido. Ya hay más de 4");
-					out.println("Lo siento. Este servidor ya está lleno");
-					Thread.currentThread().interrupt();
-					running = false;
-					break;
-				}
-
-
-
-				System.out.println("Cliente " + ip + " se llama " + name);
-				synchronized (TronServer.players) {
-					if (!TronServer.players.contains(name)) {
-						TronServer.players.insertAvailable(name, out);
+					} else {
+						this.name = line.substring(2);
+						addPlayer();
+						out.println("OK");
+						this.joined = true;
 						break;
 					}
+
 				}
 			}
 
-			// Esto se ejecuta cuando ya salió del while al responder el cliente
-			out.println("Conexión establecida");
-			System.out.println("Actualmente hay " + TronServer.players.getSize() + " clientes conectados");
-
-
-
-			// Este lee los mensajes
-			String input;
-			while ((input = in.readLine()) != null) {
-				System.out.println(name + "(" + ip + ") dijo: " + input);
-				TronServer.players.sendAll(name + "(" + ip + ") dijo: " + input);
+			// Este loop se ejecuta cuando está unido
+			while (running && joined) {
+				while ((line = in.readLine()) != null) {
+					// Hacer algo
+					System.out.println(name + " dijo: " + line);
+				}
 			}
+
 
 		} catch (Exception e) {
 			// TODO: 10/2/16 Mostrar error gráficamente por si se despicha el thread
-			System.out.println(e);
+			System.out.println("Desconexión: " + e.getMessage());
 		} finally {
 			if (running) {
 				System.out.println(name + " se ha desconectado");
 
-				TronServer.players.remove(name);
+				TronServer.getClients().remove(name);
 
-				System.out.println("Actualmente hay " + TronServer.players.getSize() + " clientes conectados");
-
-
+				System.out.println("Actualmente hay " + TronServer.getClients().getSize() + " clientes conectados");
 				try {
 					socket.close();
 				} catch (IOException e) {
