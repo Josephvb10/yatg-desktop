@@ -46,8 +46,9 @@ public class Login {
 	}
 
 	private void startGame() throws IOException {
-		Boolean game = TronClient.getInstance().connect(playerIp, playerPort);
-		if (!game) {
+
+		if (!TronClient.getInstance().connect(playerIp, playerPort)) {
+			System.out.println("Error");
 			showAlert("Error", "Can't connect to server. Please verify the IP and port.");
 			return;
 		}

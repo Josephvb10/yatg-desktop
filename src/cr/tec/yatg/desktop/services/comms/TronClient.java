@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 
 /**
@@ -31,12 +32,19 @@ public class TronClient {
 		try {
 			this.serverIp = ip;
 			this.serverPort = port;
-			this.socket = new Socket(serverIp, serverPort);
+			System.out.println("intentando socket");
+			socket = new Socket();
+			socket.connect(new InetSocketAddress(serverIp, serverPort), 1000);
+			System.out.println("Pos aqui toy");
+			if (this.socket == null) {
+				System.out.println("Soy null");
+				return false;
+			}
 			this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			this.out = new PrintWriter(socket.getOutputStream(), true);
 			return ping();
 
-		} catch (IOException e) {
+		} catch (Exception e) {
 			return false;
 		}
 	}

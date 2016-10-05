@@ -15,19 +15,19 @@ public class PaintThread extends Thread {
 		while (true) {
 			Platform.runLater(() -> {
 						ControllerFacade.getInstance().getMatrix().clean();
-						System.out.println("Voy a graficar a    jajajajajaja");
+				//System.out.println("Voy a graficar a    jajajajajaja");
 				ArrayList<Item> items = JsonParser.getInstance().getPlayerItems();
 						if (items != null) {
-							System.out.println("no es null");
+							//System.out.println("no es null");
 							for (Item data : items) {
-								System.out.println("Hay item");
-								System.out.println("(" + data.getType() + ")");
+								//System.out.println("Hay item");
+								//System.out.println("(" + data.getType() + ")");
 								if (data.getType() == ItemType.tronTrail) {
-									System.out.println("(Tron trail recibida)");
+									//System.out.println("(Tron trail recibida)");
 									if (data.getFirst()) {
 										ControllerFacade.getInstance().getMatrix().setMoto(data.getOwner().value, data.getIndexI(), data.getIndexJ());
 									} else {
-										System.out.println("No es first");
+										//System.out.println("No es first");
 										ControllerFacade.getInstance().getMatrix().setEstela(data.getOwner().value, data.getIndexI(), data.getIndexJ());
 
 									}

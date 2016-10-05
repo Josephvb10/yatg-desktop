@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.Pane?>
 <Pane xmlns:fx="http://javafx.com/fxml/1" fx:id="matrix" prefHeight="680.0" prefWidth="680.0"
       style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/8.0.65"
-      fx:controller="cr.tec.yatg.desktop.controllers.Matrix">
+      fx:controller="cr.tec.yatg.desktop.controllers.Matrix" onKeyPressed="#keyListener">
    <children>
       <Canvas fx:id="gameCanvas" height="680.0" width="680.0"/>
    </children>

@@ -1,6 +1,7 @@
 package cr.tec.yatg.desktop.controllers;
 
 import cr.tec.yatg.desktop.services.comms.JsonParser;
+import cr.tec.yatg.desktop.services.comms.TronClient;
 import cr.tec.yatg.desktop.structures.Item;
 import cr.tec.yatg.desktop.structures.ItemType;
 import javafx.animation.AnimationTimer;
@@ -9,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
@@ -47,18 +49,25 @@ public class Matrix implements Initializable {
 
 	}
 
+	@FXML
+	private void keyListener(KeyEvent event) {
+		System.out.println("ALO");
+		TronClient.getInstance().send(event.getText());
+
+	}
+
 	private void refreshJson() {
 		if (matrixData != null) {
-			System.out.println("no es null");
+			//System.out.println("no es null");
 			for (Item data : matrixData) {
-				System.out.println("Hay item");
-				System.out.println("(" + data.getType() + ")");
+				//System.out.println("Hay item");
+				//System.out.println("(" + data.getType() + ")");
 				if (data.getType() == ItemType.tronTrail) {
-					System.out.println("(Tron trail recibida)");
+					//System.out.println("(Tron trail recibida)");
 					if (data.getFirst()) {
 						setMoto(data.getOwner().value, data.getIndexI(), data.getIndexJ());
 					} else {
-						System.out.println("No es first");
+						//System.out.println("No es first");
 						setEstela(data.getOwner().value, data.getIndexI(), data.getIndexJ());
 
 					}

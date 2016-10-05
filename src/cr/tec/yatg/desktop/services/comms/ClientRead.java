@@ -36,7 +36,7 @@ public class ClientRead extends Thread {
 						JsonParser.getInstance().parseJson(line);
 					}
 					// TODO: 10/3/16 ESTO HAY QUE QUITARLO Lol
-					System.out.println(line);
+					//System.out.println(line);
 
 				}
 			} catch (IOException e) {
