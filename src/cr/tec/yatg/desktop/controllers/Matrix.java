@@ -49,9 +49,8 @@ public class Matrix implements Initializable {
 
 	}
 
-	@FXML
-	private void keyListener(KeyEvent event) {
-		System.out.println("ALO");
+	public void keyListener(KeyEvent event) {
+		System.out.println(event.getText());
 		TronClient.getInstance().send(event.getText());
 
 	}

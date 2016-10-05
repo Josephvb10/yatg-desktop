@@ -1,7 +1,9 @@
 package cr.tec.yatg.desktop.controllers;
 
+import cr.tec.yatg.desktop.services.ControllerFacade;
 import cr.tec.yatg.desktop.services.comms.TronClient;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -66,7 +69,9 @@ public class Login {
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setTitle("Yet Another Tron Game");
 		stage.setResizable(false);
-		stage.setScene(new Scene(mainScreen));
+		Scene scene = new Scene(mainScreen);
+		scene.setOnKeyPressed(t -> ControllerFacade.getInstance().getMatrix().keyListener(t));
+		stage.setScene(scene);
 		Stage mainStage = (Stage) loginButton.getScene().getWindow();
 		mainStage.close();
 
