@@ -23,12 +23,15 @@ public class JsonParser {
 		return ourInstance;
 	}
 
-	public void parseJson(String json) {
+	public void parseJson(String newJson) {
+		if (this.json == newJson) {
+			return;
+		}
 		ObjectMapper mapper = new ObjectMapper();
 		OutputMessage newMessage = new OutputMessage();
 		try {
-			newMessage = mapper.readValue(json, OutputMessage.class);
-			this.json = json;
+			newMessage = mapper.readValue(newJson, OutputMessage.class);
+			this.json = newJson;
 		} catch (IOException e) {
 			System.out.println("No se pudo procesar el JSON");
 			//System.out.println(e.getMessage());

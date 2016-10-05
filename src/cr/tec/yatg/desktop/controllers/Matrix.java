@@ -1,7 +1,6 @@
 package cr.tec.yatg.desktop.controllers;
 
 import cr.tec.yatg.desktop.services.comms.JsonParser;
-import cr.tec.yatg.desktop.services.comms.TronClient;
 import cr.tec.yatg.desktop.structures.Item;
 import cr.tec.yatg.desktop.structures.ItemType;
 import javafx.animation.AnimationTimer;
@@ -33,7 +32,7 @@ public class Matrix implements Initializable {
 
 	private GraphicsContext gc;
 
-	private ArrayList<Item> matrixData;
+	private ArrayList<Item> currentMatrixData;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -41,9 +40,12 @@ public class Matrix implements Initializable {
 
 		new AnimationTimer() {
 			public void handle(long currentNanoTime) {
-				matrixData = JsonParser.getInstance().getPlayerItems();
+				ArrayList<Item> newData = JsonParser.getInstance().getPlayerItems();
+				if (currentMatrixData == newData) {
+					return;
+				}
 				clean();
-				refreshJson();
+				refreshJson(newData);
 			}
 		}.start();
 
@@ -51,11 +53,11 @@ public class Matrix implements Initializable {
 
 	public void keyListener(KeyEvent event) {
 		System.out.println(event.getText());
-		TronClient.getInstance().send(event.getText());
+		//TronClient.getInstance().send(event.getText());
 
 	}
 
-	private void refreshJson() {
+	private void refreshJson(ArrayList<Item> matrixData) {
 		if (matrixData != null) {
 			//System.out.println("no es null");
 			for (Item data : matrixData) {
