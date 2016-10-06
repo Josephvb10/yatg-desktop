@@ -3,7 +3,6 @@ package cr.tec.yatg.desktop.controllers;
 import cr.tec.yatg.desktop.services.ControllerFacade;
 import cr.tec.yatg.desktop.services.comms.TronClient;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,7 +11,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -70,6 +68,7 @@ public class Login {
 						try {
 							success();
 						} catch (IOException e) {
+							// Esto es muy malo
 							fail("Error", "Por alguna razón no se pudo abrir la siguiente ventana");
 						}
 					});
