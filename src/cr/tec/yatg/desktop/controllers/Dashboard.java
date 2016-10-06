@@ -2,6 +2,7 @@ package cr.tec.yatg.desktop.controllers;
 
 import cr.tec.yatg.desktop.services.ControllerFacade;
 import cr.tec.yatg.desktop.services.comms.JsonParser;
+import cr.tec.yatg.desktop.services.comms.TronClient;
 import cr.tec.yatg.desktop.structures.SimplePlayer;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
@@ -42,11 +43,15 @@ public class Dashboard implements Initializable {
 		ControllerFacade.getInstance().setMatrix(matrixController);
 		ControllerFacade.getInstance().setDashboard(dashboardController);
 
+		serverIp.setText(TronClient.getInstance().getServerIp() + ":" + TronClient.getInstance().getServerPort());
+
+
 
 
 
 		new AnimationTimer() {
 			public void handle(long currentNanoTime) {
+				refreshPlayerNumber();
 				playerData = JsonParser.getInstance().getPlayerData();
 				if (playerData != null) {
 					refreshFuel();
@@ -55,11 +60,15 @@ public class Dashboard implements Initializable {
 		}.start();
 	}
 
+	private void refreshPlayerNumber() {
+		playerNum.setText(Integer.toString(TronClient.getInstance().getCurrentPlayers()));
+	}
+
 	@FXML
 	protected void doSomething() throws Exception {
 
 
-		serverIp.setText("192.168.1.0:8043");
+
 		playerNum.setText("1");
 
 		fuelBar.setProgress(0.5);

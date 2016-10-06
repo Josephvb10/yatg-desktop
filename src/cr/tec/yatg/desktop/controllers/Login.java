@@ -48,20 +48,37 @@ public class Login {
 		return true;
 	}
 
-	private void startGame() throws IOException {
+	private void startGame() {
 
-		if (!TronClient.getInstance().connect(playerIp, playerPort)) {
-			System.out.println("Error");
-			showAlert("Error", "Can't connect to server. Please verify the IP and port.");
-			return;
-		}
+		loginButton.setText("LOADING");
 
-		String joinMsg = TronClient.getInstance().joinIfCan("Joseph");
-		if (!joinMsg.equals("OK")) {
-			showAlert("Error", joinMsg);
-			return;
-		}
+		new Thread() {
+			public void run() {
+				if (!TronClient.getInstance().connect(playerIp, playerPort)) {
+					System.out.println("Error");
+					Platform.runLater(() -> fail("Error", "Can't connect to server. Please verify the IP and port."));
+					return;
+				}
 
+				String joinMsg = TronClient.getInstance().joinIfCan(playerUsername);
+				if (!joinMsg.equals("OK")) {
+					Platform.runLater(() -> fail("Error", joinMsg));
+					return;
+				}
+
+					Platform.runLater(() -> {
+						try {
+							success();
+						} catch (IOException e) {
+							fail("Error", "Por alguna razón no se pudo abrir la siguiente ventana");
+						}
+					});
+			}
+		}.start();
+
+	}
+
+	private void success() throws IOException  {
 		System.out.println("Entered Username: " + getUsername.getText());
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/views/main.fxml"));
 		Parent mainScreen = fxmlLoader.load();
@@ -83,11 +100,12 @@ public class Login {
 		TronClient.getInstance().send("%AU");
 	}
 
-	private void showAlert(String title, String msg) {
+	private void fail(String title, String msg) {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle(title);
 		alert.setContentText(msg);
 		alert.showAndWait();
+		loginButton.setText("PLAY");
 	}
 
 	@FXML

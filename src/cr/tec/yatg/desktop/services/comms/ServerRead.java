@@ -55,24 +55,25 @@ public class ServerRead extends Thread {
 				}
 
 				if (line.substring(0, 2).equals("%J")) {
+					this.name = line.substring(2).trim();
 					if (TronServer.getClients().getSize() >= 4) {
 						System.out.println("Cliente removido. Ya hay más de 4");
-						out.println("%ELo sentimos. Este servidor ya está lleno.");
+						out.println("Lo sentimos. Este servidor ya está lleno.");
 						Thread.currentThread().interrupt();
 						running = false;
 						break;
 					} else if (TronServer.getClients().contains(name)) {
 						System.out.println("Cliente removido. Se intenta llamar " + name + " pero ya existe con ese nombre");
-						out.println("%EEse nombre ya está en uso, por favor elige otro.");
+						out.println("Ese nombre ya está en uso, por favor elige otro.");
 						Thread.currentThread().interrupt();
 						running = false;
 						break;
 
 					} else {
-						this.name = line.substring(2);
 						addPlayer();
 						out.println("OK");
 						this.joined = true;
+						TronServer.getClients().sendAll("%P" +  TronServer.getClients().getSize());
 						break;
 					}
 
@@ -98,6 +99,8 @@ public class ServerRead extends Thread {
 				TronServer.getClients().remove(name);
 
 				System.out.println("Actualmente hay " + TronServer.getClients().getSize() + " clientes conectados");
+
+				TronServer.getClients().sendAll("%P" +  TronServer.getClients().getSize());
 				try {
 					socket.close();
 				} catch (IOException e) {

@@ -13,6 +13,7 @@ import java.net.Socket;
 public class TronClient {
 	private static TronClient ourInstance = new TronClient();
 	private String serverIp;
+	private int currentPlayers = 0;
 	private int serverPort;
 	private BufferedReader in;
 	private PrintWriter out;
@@ -20,12 +21,19 @@ public class TronClient {
 	//private ClientWrite write;
 	private ClientRead read;
 	private boolean running = false;
-
 	private TronClient() {
 	}
 
 	public static TronClient getInstance() {
 		return ourInstance;
+	}
+
+	public String getServerIp() {
+		return serverIp;
+	}
+
+	public int getServerPort() {
+		return serverPort;
 	}
 
 	public boolean connect(String ip, int port) {
@@ -34,7 +42,7 @@ public class TronClient {
 			this.serverPort = port;
 			System.out.println("intentando socket");
 			socket = new Socket();
-			socket.connect(new InetSocketAddress(serverIp, serverPort), 1000);
+			socket.connect(new InetSocketAddress(serverIp, serverPort), 3000);
 			System.out.println("Pos aqui toy");
 			if (this.socket == null) {
 				System.out.println("Soy null");
@@ -100,7 +108,12 @@ public class TronClient {
 	}
 
 	public void send(String msg) {
-		out.println(msg);
+		new Thread() {
+			public void run() {
+				out.println(msg);
+			}
+		}.start();
+
 	}
 
 	public boolean isRunning() {
@@ -109,5 +122,13 @@ public class TronClient {
 
 	public void stop() {
 		this.running = false;
+	}
+
+	public int getCurrentPlayers() {
+		return currentPlayers;
+	}
+
+	public void setCurrentPlayers(int currentPlayers) {
+		this.currentPlayers = currentPlayers;
 	}
 }
