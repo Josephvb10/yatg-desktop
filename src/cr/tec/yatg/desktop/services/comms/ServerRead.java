@@ -94,13 +94,7 @@ public class ServerRead extends Thread {
 			System.out.println("Desconexión: " + e.getMessage());
 		} finally {
 			if (running) {
-				System.out.println(name + " se ha desconectado");
-
-				TronServer.getClients().remove(name);
-
-				System.out.println("Actualmente hay " + TronServer.getClients().getSize() + " clientes conectados");
-
-				TronServer.getClients().sendAll("%P" +  TronServer.getClients().getSize());
+				logoutUser();
 				try {
 					socket.close();
 				} catch (IOException e) {
@@ -108,5 +102,15 @@ public class ServerRead extends Thread {
 				}
 			}
 		}
+	}
+
+	public void logoutUser() {
+		System.out.println(name + " se ha desconectado");
+
+		TronServer.getClients().remove(name);
+
+		System.out.println("Actualmente hay " + TronServer.getClients().getSize() + " clientes conectados");
+
+		TronServer.getClients().sendAll("%P" + TronServer.getClients().getSize());
 	}
 }
