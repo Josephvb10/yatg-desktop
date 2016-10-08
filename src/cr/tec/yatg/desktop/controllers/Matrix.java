@@ -184,9 +184,9 @@ public class Matrix implements Initializable {
 	private void drawHalfSquare(Color color, double i, double j) {
 
 		gc.setFill(color);
-		gc.fillRect(i * size, j * size, size / 2, size);
+		gc.fillRect(i * size, j * size, size / 2, size / 2);
 		gc.setStroke(Color.BLACK);
-		gc.strokeRect(i * size, j * size, size / 2, size);
+		gc.strokeRect(i * size, j * size, size / 2, size / 2);
 	}
 
 
