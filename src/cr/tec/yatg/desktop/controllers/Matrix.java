@@ -89,15 +89,20 @@ public class Matrix implements Initializable {
 							g = Color.RED;
 						}
 					} else if (data.getType() == ItemType.bomb) {
-						g = Color.BLUE;
+						drawImage(new Image("/cr/tec/yatg/desktop/resources/images/bomb.png"), data.getIndexI(), data.getIndexJ());
+						continue;
 					} else if (data.getType() == ItemType.shield) {
-						g = Color.ORANGE;
+						drawImage(new Image("/cr/tec/yatg/desktop/resources/images/shield.png"), data.getIndexI(), data.getIndexJ());
+						continue;
 					} else if (data.getType() == ItemType.turbo) {
-						g = Color.CYAN;
+						drawImage(new Image("/cr/tec/yatg/desktop/resources/images/turbo.png"), data.getIndexI(), data.getIndexJ());
+						continue;
 					} else if (data.getType() == ItemType.increaseTail) {
-						g = Color.GRAY;
+						drawImage(new Image("/cr/tec/yatg/desktop/resources/images/plus.png"), data.getIndexI(), data.getIndexJ());
+						continue;
 					} else if (data.getType() == ItemType.fuel) {
-						g = Color.GREEN;
+						drawImage(new Image("/cr/tec/yatg/desktop/resources/images/fuel.png"), data.getIndexI(), data.getIndexJ());
+						continue;
 					}
 
 				}
