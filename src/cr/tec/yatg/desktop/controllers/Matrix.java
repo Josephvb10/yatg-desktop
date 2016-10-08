@@ -91,19 +91,19 @@ public class Matrix implements Initializable {
 					if (data.getType() == ItemType.tronTrail) {
 						if (data.getOwner() == JsonParser.getInstance().getPlayerData().getOwner()) {
 							if (JsonParser.getInstance().getPlayerData().isShieldActivated()) {
-								if (this.star == false) {
+								if (!star) {
 									MusicPlayer.getInstance().play("src/cr/tec/yatg/desktop/resources/music/starman.mp3");
 									this.star = true;
 								}
-								g = Color.BLUE;
 
 							} else {
-								if (this.star == true) {
+								if (star) {
 									MusicPlayer.getInstance().play("src/cr/tec/yatg/desktop/resources/music/title.mp3");
 									this.star = false;
 								}
-								g = Color.CYAN;
 							}
+
+							g = Color.CYAN;
 						} else {
 							g = Color.WHITE;
 						}
@@ -127,6 +127,9 @@ public class Matrix implements Initializable {
 				}
 
 				drawSquare(g, data.getIndexI(), data.getIndexJ());
+				if (star) {
+					drawHalfSquare(Color.BLUE, data.getIndexI(), data.getIndexJ());
+				}
 			}
 		}
 	}
@@ -176,6 +179,14 @@ public class Matrix implements Initializable {
 		gc.fillRect(i * size, j * size, size, size);
 		gc.setStroke(Color.BLACK);
 		gc.strokeRect(i * size, j * size, size, size);
+	}
+
+	private void drawHalfSquare(Color color, double i, double j) {
+
+		gc.setFill(color);
+		gc.fillRect(i * size, j * size, size / 2, size);
+		gc.setStroke(Color.BLACK);
+		gc.strokeRect(i * size, j * size, size / 2, size);
 	}
 
 
