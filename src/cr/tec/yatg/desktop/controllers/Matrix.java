@@ -83,6 +83,7 @@ public class Matrix implements Initializable {
 	}
 
 	private void refreshJson(ArrayList<Item> matrixData) {
+		System.out.println();
 		if (matrixData != null) {
 			Color g = Color.BLACK;
 			for (Item data : matrixData) {

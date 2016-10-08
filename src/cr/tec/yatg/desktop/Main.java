@@ -19,7 +19,7 @@ public class Main extends Application {
 		primaryStage.setScene(new Scene(root, 880, 680));
 		primaryStage.setResizable(false);
 		primaryStage.show();
-		MusicPlayer.play("src/cr/tec/yatg/desktop/resources/music/title.mp3");
+		//MusicPlayer.play("src/cr/tec/yatg/desktop/resources/music/title.mp3");
 
 
 	}

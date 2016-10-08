@@ -1,5 +1,6 @@
 package cr.tec.yatg.desktop.controllers;
 
+import cr.tec.yatg.desktop.services.MusicPlayer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,6 +38,7 @@ public class Splash {
 				System.exit(0);
 			});
 			stage.show();
+			MusicPlayer.play("src/cr/tec/yatg/desktop/resources/music/title.mp3");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
