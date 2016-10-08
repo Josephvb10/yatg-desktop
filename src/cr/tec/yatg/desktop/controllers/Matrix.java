@@ -51,7 +51,7 @@ public class Matrix implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		gc = gameCanvas.getGraphicsContext2D();
-		MusicPlayer.play("src/cr/tec/yatg/desktop/resources/music/title.mp3");
+		//MusicPlayer.play("src/cr/tec/yatg/desktop/resources/music/title.mp3");
 
 		new AnimationTimer() {
 			public void handle(long currentNanoTime) {
@@ -94,15 +94,12 @@ public class Matrix implements Initializable {
 					if (data.getType() == ItemType.tronTrail) {
 						if (data.getOwner() == JsonParser.getInstance().getPlayerData().getOwner()) {
 							drawStar = true;
-							if (JsonParser.getInstance().getPlayerData().isShieldActivated()) {
+							if (JsonParser.getInstance().getPlayerData().isShieldActivated() || JsonParser.getInstance().getPlayerData().isSpeedActivated()) {
 								if (!star) {
-									MusicPlayer.play("src/cr/tec/yatg/desktop/resources/music/starman.mp3");
 									star = true;
 								}
-
 							} else {
 								if (star) {
-									MusicPlayer.play("src/cr/tec/yatg/desktop/resources/music/title.mp3");
 									star = false;
 								}
 							}
@@ -131,9 +128,14 @@ public class Matrix implements Initializable {
 				}
 
 				drawSquare(g, data.getIndexI(), data.getIndexJ());
-				if (star && drawStar) {
+				if (star && drawStar && JsonParser.getInstance().getPlayerData().isPowerUpActivated()) {
+					if(JsonParser.getInstance().getPlayerData().isShieldActivated()){
 					drawHalfSquare(Color.BLUE, data.getIndexI(), data.getIndexJ());
+					}
+					else if(JsonParser.getInstance().getPlayerData().isSpeedActivated()){
+					drawHalfSquare(Color.RED, data.getIndexI(), data.getIndexJ());}
 				}
+			
 			}
 		}
 	}
@@ -235,6 +237,5 @@ public class Matrix implements Initializable {
 
 		stage.show();
 
-		MusicPlayer.play("src/cr/tec/yatg/desktop/resources/music/title.mp3");
 	}
 }

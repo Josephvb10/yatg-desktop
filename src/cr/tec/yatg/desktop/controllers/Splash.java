@@ -38,7 +38,7 @@ public class Splash {
 				System.exit(0);
 			});
 			stage.show();
-			MusicPlayer.play("src/cr/tec/yatg/desktop/resources/music/title.mp3");
+			//MusicPlayer.play("src/cr/tec/yatg/desktop/resources/music/title.mp3");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
