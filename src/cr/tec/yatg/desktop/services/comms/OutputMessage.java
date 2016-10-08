@@ -5,7 +5,6 @@ import cr.tec.yatg.desktop.structures.*;
 
 import java.util.ArrayList;
 
-
 public class OutputMessage {
 	private static int nextid = 0;
 	/**
@@ -26,12 +25,12 @@ public class OutputMessage {
 		this.powerupsList = powerupsList;
 	}
 
-	public OutputMessage(Troncycle player, GenericLinkedList<Item> itemList, GenericLinkedList<Item> powerupsList) {
+	public OutputMessage(Troncycle player, GenericLinkedList<Item> itemList) {
 		super();
 		id = getNextid();
 		importPlayer(player);
 		importItemList(itemList);
-		importPowerupsList(powerupsList);
+		importPowerupsList(player.getPowerUpStack());
 	}
 
 	private static int getNextid() {
@@ -57,6 +56,7 @@ public class OutputMessage {
 	public void setPlayer(SimplePlayer player) {
 		this.player = player;
 	}
+
 
 
 	public ArrayList<Item> getPowerupsList() {
@@ -97,8 +97,8 @@ public class OutputMessage {
 		this.itemList = newItemList;
 	}
 
-	public void importPowerupsList(GenericLinkedList<Item> powerupsList) {
-		GenericNode<Item> current = powerupsList.getHead();
+	public void importPowerupsList(GenericStack<Item> genericStack) {
+		GenericNode<Item> current = genericStack.getHead();
 		ArrayList<Item> newPowerupsList = new ArrayList<>();
 		while (current != null) {
 			newPowerupsList.add(current.getData());
