@@ -1,18 +1,29 @@
 package cr.tec.yatg.desktop.controllers;
 
+import cr.tec.yatg.desktop.services.ControllerFacade;
 import cr.tec.yatg.desktop.services.comms.JsonParser;
+import cr.tec.yatg.desktop.services.comms.TronClient;
 import cr.tec.yatg.desktop.structures.Item;
 import cr.tec.yatg.desktop.structures.ItemType;
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -52,27 +63,42 @@ public class Matrix implements Initializable {
 	}
 
 	public void keyListener(KeyEvent event) {
-		System.out.println(event.getText());
-		//TronClient.getInstance().send(event.getText());
-
+		if (event.getCode() == KeyCode.UP) {
+			TronClient.getInstance().send("%DL");
+		} else if (event.getCode() == KeyCode.DOWN) {
+			TronClient.getInstance().send("%DR");
+		} else if (event.getCode() == KeyCode.LEFT) {
+			TronClient.getInstance().send("%DU");
+		} else if (event.getCode() == KeyCode.RIGHT) {
+			TronClient.getInstance().send("%DD");
+		}
 	}
 
 	private void refreshJson(ArrayList<Item> matrixData) {
 		if (matrixData != null) {
+			Color g = Color.BLACK;
 			//System.out.println("no es null");
 			for (Item data : matrixData) {
-				//System.out.println("Hay item");
-				//System.out.println("(" + data.getType() + ")");
-				if (data.getType() == ItemType.tronTrail) {
-					//System.out.println("(Tron trail recibida)");
-					if (data.getFirst()) {
-						setMoto(data.getOwner().value, data.getIndexI(), data.getIndexJ());
-					} else {
-						//System.out.println("No es first");
-						setEstela(data.getOwner().value, data.getIndexI(), data.getIndexJ());
-
+				if (data == null) {
+					g = Color.BLACK;
+				} else {
+					if (data.getType() == ItemType.tronTrail) {
+						g = Color.RED;
+					} else if (data.getType() == ItemType.bomb) {
+						g = Color.BLUE;
+					} else if (data.getType() == ItemType.shield) {
+						g = Color.ORANGE;
+					} else if (data.getType() == ItemType.turbo) {
+						g = Color.CYAN;
+					} else if (data.getType() == ItemType.increaseTail) {
+						g = Color.GRAY;
+					} else if (data.getType() == ItemType.fuel) {
+						g = Color.GREEN;
 					}
+
 				}
+
+				drawSquare(g, data.getIndexI(), data.getIndexJ());
 			}
 		}
 	}
@@ -162,4 +188,38 @@ public class Matrix implements Initializable {
 	}
 
 
+	public void died() {
+		Alert alert = new Alert(Alert.AlertType.ERROR);
+		alert.setTitle("You died");
+		alert.setContentText("You are dead. Better luck next time  ¯\\_(ツ)_/¯");
+		alert.showAndWait();
+		TronClient.getInstance().disconnect();
+
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/views/login.fxml"));
+		Parent mainScreen = null;
+		try {
+			mainScreen = fxmlLoader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Stage stage = new Stage();
+		stage.initModality(Modality.APPLICATION_MODAL);
+		stage.setTitle("Yet Another Tron Game");
+		stage.setResizable(false);
+		Scene scene = new Scene(mainScreen);
+		scene.setOnKeyPressed(t -> ControllerFacade.getInstance().getMatrix().keyListener(t));
+		stage.setScene(scene);
+		Stage mainStage = (Stage) gameCanvas.getScene().getWindow();
+		mainStage.close();
+
+		mainStage.setOnCloseRequest(e -> {
+		});
+
+		stage.setOnCloseRequest(e -> {
+			Platform.exit();
+			System.exit(0);
+		});
+
+		stage.show();
+	}
 }

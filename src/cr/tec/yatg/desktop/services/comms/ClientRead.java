@@ -1,6 +1,7 @@
 package cr.tec.yatg.desktop.services.comms;
 
 import cr.tec.yatg.desktop.services.ControllerFacade;
+import javafx.application.Platform;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,6 +34,10 @@ public class ClientRead extends Thread {
 						String cmd = line.substring(1, 2);
 						System.out.println(cmd);
 						switch (cmd){
+							case "D":
+								Platform.runLater(() -> {
+									ControllerFacade.getInstance().getMatrix().died();
+								});
 							case "K":
 								//TronClient.getInstance().stop();
 								//ControllerFacade.getInstance().kicked();

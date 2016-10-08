@@ -57,6 +57,14 @@ public class TronClient {
 		}
 	}
 
+	public void disconnect() {
+		try {
+			socket.close();
+		} catch (IOException e) {
+
+		}
+	}
+
 	private boolean ping() {
 		out.println("TECPING");
 		long timeoutMs = 1;
