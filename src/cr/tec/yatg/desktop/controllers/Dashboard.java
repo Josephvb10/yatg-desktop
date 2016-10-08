@@ -64,23 +64,6 @@ public class Dashboard implements Initializable {
 		playerNum.setText(Integer.toString(TronClient.getInstance().getCurrentPlayers()));
 	}
 
-	@FXML
-	protected void doSomething() throws Exception {
-
-
-
-		playerNum.setText("1");
-
-		fuelBar.setProgress(0.5);
-
-		//matrixController.setMoto(2, 3, 5);
-		//matrixController.setEstela(2, 3, 6);
-
-
-		//new PaintThread().start();
-
-
-	}
 
 	public void exitGame() {
 		System.out.println("Saliendo");

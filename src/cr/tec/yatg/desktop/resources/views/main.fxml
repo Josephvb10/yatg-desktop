@@ -19,7 +19,6 @@
         <children>
 
 
-            <Button layoutX="37.0" layoutY="462.0" mnemonicParsing="false" onAction="#doSomething" text="Press me!"/>
             <Button cancelButton="true" layoutY="647.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="25.0"
                     prefWidth="200.0" styleClass="exit-button" text="Salir del juego"/>
             <ProgressBar fx:id="fuelBar" layoutX="23.0" layoutY="134.0" prefHeight="20.0" prefWidth="155.0"
