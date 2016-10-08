@@ -71,6 +71,10 @@ public class Matrix implements Initializable {
 			TronClient.getInstance().send("%DU");
 		} else if (event.getCode() == KeyCode.RIGHT) {
 			TronClient.getInstance().send("%DD");
+		} else if (event.getCode() == KeyCode.Z) {
+			TronClient.getInstance().send("%IU");
+		} else if (event.getCode() == KeyCode.X) {
+			TronClient.getInstance().send("%IN");
 		}
 	}
 
