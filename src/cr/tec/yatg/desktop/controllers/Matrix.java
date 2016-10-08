@@ -146,34 +146,6 @@ public class Matrix implements Initializable {
 
 	}
 
-	public void setMoto(int player, double i, double j) {
-		Color color;
-		switch (player) {
-			case 1:
-				color = Color.RED;
-				break;
-			case 2:
-				color = Color.GREEN;
-				break;
-			case 3:
-				color = Color.DARKORANGE;
-				break;
-			case 4:
-				color = Color.YELLOW;
-				break;
-			case 5:
-				color = Color.BROWN;
-				break;
-			case 6:
-				color = Color.VIOLET;
-				break;
-			default:
-				color = Color.WHITE;
-				break;
-		}
-		//drawImage(new Image("/cr/tec/yatg/desktop/resources/images/moto.png"), i, j);
-		drawSquare(color, i, j);
-	}
 
 
 	private void drawSquare(Color color, double i, double j) {
@@ -226,9 +198,6 @@ public class Matrix implements Initializable {
 		gc.clearRect(0, 0, winSize, winSize);
 	}
 
-	public void setBomba(int type) {
-		System.out.println(" BOMBA ");
-	}
 
 
 	public void died() {

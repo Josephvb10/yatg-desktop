@@ -16,15 +16,7 @@ public class MusicPlayer {
 	private MusicPlayer() {
 	}
 
-	public static MusicPlayer getInstance() {
-		return ourInstance;
-	}
-
 	public static void play(String path) {
-		if (actual != null) {
-			actual.stop();
-			actual = null;
-		}
 		Media media = new Media(new File(path).toURI().toString());
 		MediaPlayer actual = new MediaPlayer(media);
 		actual.setOnEndOfMedia(() -> actual.seek(Duration.ZERO));
