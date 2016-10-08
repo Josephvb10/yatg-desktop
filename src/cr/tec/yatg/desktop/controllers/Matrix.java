@@ -84,9 +84,9 @@ public class Matrix implements Initializable {
 				} else {
 					if (data.getType() == ItemType.tronTrail) {
 						if (data.getOwner() == JsonParser.getInstance().getPlayerData().getOwner()) {
-							g = Color.PALEVIOLETRED;
-						} else {
 							g = Color.RED;
+						} else {
+							g = Color.WHITE;
 						}
 					} else if (data.getType() == ItemType.bomb) {
 						drawImage(new Image("/cr/tec/yatg/desktop/resources/images/bomb.png"), data.getIndexI(), data.getIndexJ());
