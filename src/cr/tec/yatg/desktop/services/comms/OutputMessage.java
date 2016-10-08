@@ -22,7 +22,6 @@ public class OutputMessage {
 		super();
 		this.player = player;
 		this.itemList = itemList;
-		this.powerupsList = powerupsList;
 	}
 
 	public OutputMessage(Troncycle player, GenericLinkedList<Item> itemList) {
@@ -31,6 +30,7 @@ public class OutputMessage {
 		importPlayer(player);
 		importItemList(itemList);
 		importPowerupsList(player.getPowerUpStack());
+
 	}
 
 	private static int getNextid() {
@@ -57,21 +57,10 @@ public class OutputMessage {
 		this.player = player;
 	}
 
-
-
-	public ArrayList<Item> getPowerupsList() {
-		return powerupsList;
-	}
-
-	public void setPowerupsList(ArrayList<Item> powerupsList) {
-		this.powerupsList = powerupsList;
-	}
-
 	public void importPlayer(Troncycle player) {
 		SimplePlayer simplePlayer = new SimplePlayer(player.getOwner(), player.getSpeed(), player.getFuel(),
 				player.getCurrentDirection(), player.getExtraTrail(), player.getPowerUpSteps(), player.getIsDead(),
-				player.getPowerUpActivated());
-		importItemsPriorityQueue(player.getItemsQueue());
+				player.getPowerUpActivated(), player.isShieldActivated(), player.isSpeedActivated());
 		setPlayer(simplePlayer);
 
 	}
@@ -104,24 +93,20 @@ public class OutputMessage {
 			newPowerupsList.add(current.getData());
 			current = current.getNext();
 		}
-		this.powerupsList = newPowerupsList;
-	}
-
-	public void importItemsPriorityQueue(ItemsPriorityQueue itemsPriorityQueue) {
-		GenericNode<Item> current = itemsPriorityQueue.getHead();
-		ArrayList<Item> newItemsPriorityQueue = new ArrayList<>();
-		while (current != null) {
-			newItemsPriorityQueue.add(current.getData());
-
-			current = current.getNext();
-
-		}
-		this.itemList = newItemsPriorityQueue;
+		this.setpowerupsList(newPowerupsList);
 	}
 
 	public String toJson() {
 		String messageJson = JsonConverter.objectToJson(this);
 		return messageJson;
+	}
+
+	public ArrayList<Item> getpowerupsList() {
+		return powerupsList;
+	}
+
+	public void setpowerupsList(ArrayList<Item> powerupsList) {
+		this.powerupsList = powerupsList;
 	}
 
 }

@@ -18,6 +18,7 @@ public class Main extends Application {
 		primaryStage.setScene(new Scene(root, 880, 680));
 		primaryStage.setResizable(false);
 		primaryStage.show();
+		//MusicPlayer.getInstance().play("src/cr/tec/yatg/desktop/resources/music/starman.mp3");
 
 
 	}
