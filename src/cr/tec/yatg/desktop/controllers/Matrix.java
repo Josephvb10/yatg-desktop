@@ -51,6 +51,7 @@ public class Matrix implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		gc = gameCanvas.getGraphicsContext2D();
+		MusicPlayer.play("src/cr/tec/yatg/desktop/resources/music/title.mp3");
 
 		new AnimationTimer() {
 			public void handle(long currentNanoTime) {
@@ -95,13 +96,13 @@ public class Matrix implements Initializable {
 							if (JsonParser.getInstance().getPlayerData().isShieldActivated()) {
 								if (!star) {
 									MusicPlayer.play("src/cr/tec/yatg/desktop/resources/music/starman.mp3");
-									this.star = true;
+									star = true;
 								}
 
 							} else {
 								if (star) {
 									MusicPlayer.play("src/cr/tec/yatg/desktop/resources/music/title.mp3");
-									this.star = false;
+									star = false;
 								}
 							}
 
@@ -263,5 +264,7 @@ public class Matrix implements Initializable {
 		});
 
 		stage.show();
+
+		MusicPlayer.play("src/cr/tec/yatg/desktop/resources/music/title.mp3");
 	}
 }
