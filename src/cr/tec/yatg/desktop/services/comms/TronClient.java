@@ -40,12 +40,9 @@ public class TronClient {
 		try {
 			this.serverIp = ip;
 			this.serverPort = port;
-			System.out.println("intentando socket");
 			socket = new Socket();
 			socket.connect(new InetSocketAddress(serverIp, serverPort), 3000);
-			System.out.println("Pos aqui toy");
 			if (this.socket == null) {
-				System.out.println("Soy null");
 				return false;
 			}
 			this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
