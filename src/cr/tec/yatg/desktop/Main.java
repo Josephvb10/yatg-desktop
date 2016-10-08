@@ -1,5 +1,6 @@
 package cr.tec.yatg.desktop;
 
+import cr.tec.yatg.desktop.services.MusicPlayer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,7 +19,7 @@ public class Main extends Application {
 		primaryStage.setScene(new Scene(root, 880, 680));
 		primaryStage.setResizable(false);
 		primaryStage.show();
-		//MusicPlayer.getInstance().play("src/cr/tec/yatg/desktop/resources/music/starman.mp3");
+		MusicPlayer.getInstance().play("src/cr/tec/yatg/desktop/resources/music/title.mp3");
 
 
 	}

@@ -1,6 +1,7 @@
 package cr.tec.yatg.desktop.controllers;
 
 import cr.tec.yatg.desktop.services.ControllerFacade;
+import cr.tec.yatg.desktop.services.MusicPlayer;
 import cr.tec.yatg.desktop.services.comms.JsonParser;
 import cr.tec.yatg.desktop.services.comms.TronClient;
 import cr.tec.yatg.desktop.structures.Item;
@@ -45,6 +46,8 @@ public class Matrix implements Initializable {
 
 	private ArrayList<Item> currentMatrixData;
 
+	private boolean star = false;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		gc = gameCanvas.getGraphicsContext2D();
@@ -88,8 +91,17 @@ public class Matrix implements Initializable {
 					if (data.getType() == ItemType.tronTrail) {
 						if (data.getOwner() == JsonParser.getInstance().getPlayerData().getOwner()) {
 							if (JsonParser.getInstance().getPlayerData().isShieldActivated()) {
+								if (this.star == false) {
+									MusicPlayer.getInstance().play("src/cr/tec/yatg/desktop/resources/music/starman.mp3");
+									this.star = true;
+								}
 								g = Color.BLUE;
+
 							} else {
+								if (this.star == true) {
+									MusicPlayer.getInstance().play("src/cr/tec/yatg/desktop/resources/music/title.mp3");
+									this.star = false;
+								}
 								g = Color.CYAN;
 							}
 						} else {
