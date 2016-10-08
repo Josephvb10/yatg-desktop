@@ -72,7 +72,7 @@ public class Matrix implements Initializable {
 		} else if (event.getCode() == KeyCode.RIGHT) {
 			TronClient.getInstance().send("%DD");
 		} else if (event.getCode() == KeyCode.Z) {
-			TronClient.getInstance().send("%IU");
+			TronClient.getInstance().send("%IT");
 		} else if (event.getCode() == KeyCode.X) {
 			TronClient.getInstance().send("%IN");
 		}
@@ -158,7 +158,8 @@ public class Matrix implements Initializable {
 
 		gc.setFill(color);
 		gc.fillRect(i * size, j * size, size, size);
-
+		gc.setStroke(Color.BLACK);
+		gc.strokeRect(i * size, j * size, size, size);
 	}
 
 
