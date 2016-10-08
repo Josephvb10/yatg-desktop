@@ -3,6 +3,8 @@ package cr.tec.yatg.desktop.controllers;
 import cr.tec.yatg.desktop.services.ControllerFacade;
 import cr.tec.yatg.desktop.services.comms.JsonParser;
 import cr.tec.yatg.desktop.services.comms.TronClient;
+import cr.tec.yatg.desktop.structures.Item;
+import cr.tec.yatg.desktop.structures.ItemType;
 import cr.tec.yatg.desktop.structures.SimplePlayer;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
@@ -11,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
@@ -34,8 +38,12 @@ public class Dashboard implements Initializable {
 	private Label playerNum;
 	@FXML
 	private ProgressBar fuelBar;
+	@FXML
+	private ImageView powerImage;
 
 	private SimplePlayer playerData;
+
+	private ItemType currentPower = null;
 
 
 	@Override
@@ -47,14 +55,13 @@ public class Dashboard implements Initializable {
 
 
 
-
-
 		new AnimationTimer() {
 			public void handle(long currentNanoTime) {
 				refreshPlayerNumber();
 				playerData = JsonParser.getInstance().getPlayerData();
 				if (playerData != null) {
 					refreshFuel();
+					refreshPowers();
 				}
 			}
 		}.start();
@@ -62,6 +69,31 @@ public class Dashboard implements Initializable {
 
 	private void refreshPlayerNumber() {
 		playerNum.setText(Integer.toString(TronClient.getInstance().getCurrentPlayers()));
+	}
+
+	public void refreshPowers() {
+		System.out.println(JsonParser.getInstance().getPowerUps().size());
+		if (JsonParser.getInstance().getPowerUps().size() == 0) {
+			if (currentPower == null) {
+				return;
+			}
+			powerImage.setImage(new Image("/cr/tec/yatg/desktop/resources/images/mystery.png"));
+			return;
+		}
+		Item item = JsonParser.getInstance().getPowerUps().get(0);
+		if (item.getType() == ItemType.shield) {
+			if (currentPower == ItemType.shield) {
+				return;
+			}
+			powerImage.setImage(new Image("/cr/tec/yatg/desktop/resources/images/iShield.png"));
+		} else if (item.getType() == ItemType.turbo) {
+			if (currentPower == ItemType.turbo) {
+				return;
+			}
+			powerImage.setImage(new Image("/cr/tec/yatg/desktop/resources/images/iSpeed.png"));
+		}
+
+
 	}
 
 
