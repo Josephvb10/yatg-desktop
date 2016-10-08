@@ -47,7 +47,7 @@ public class JsonParser {
 	}
 
 	public ArrayList<Item> getPowerUps() {
-		return null != parsedJson ? parsedJson.getPowerupsList() : null;
+		return null != parsedJson ? parsedJson.getpowerupsList() : null;
 	}
 
 	public ArrayList<Item> getPlayerItems() {
