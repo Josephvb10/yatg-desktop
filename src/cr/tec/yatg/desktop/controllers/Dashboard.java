@@ -74,9 +74,7 @@ public class Dashboard implements Initializable {
 	public void refreshPowers() {
 		System.out.println(JsonParser.getInstance().getPowerUps().size());
 		if (JsonParser.getInstance().getPowerUps().size() == 0) {
-			if (currentPower == null) {
-				return;
-			}
+
 			powerImage.setImage(new Image("/cr/tec/yatg/desktop/resources/images/mystery.png"));
 			return;
 		}
