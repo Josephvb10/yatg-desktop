@@ -40,6 +40,8 @@ public class Dashboard implements Initializable {
 	private ProgressBar fuelBar;
 	@FXML
 	private ImageView powerImage;
+	@FXML
+	private Label p1Data;
 
 	private SimplePlayer playerData;
 
@@ -49,7 +51,7 @@ public class Dashboard implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resource) {
 		ControllerFacade.getInstance().setMatrix(matrixController);
-		ControllerFacade.getInstance().setDashboard(dashboardController);
+		ControllerFacade.getInstance().setDashboard(this);
 
 		serverIp.setText(TronClient.getInstance().getServerIp() + ":" + TronClient.getInstance().getServerPort());
 
@@ -120,4 +122,7 @@ public class Dashboard implements Initializable {
 	}
 
 
+	public void printPlayers(String msg) {
+		p1Data.setText(msg);
+	}
 }

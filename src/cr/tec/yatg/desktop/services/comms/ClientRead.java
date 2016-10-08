@@ -27,17 +27,23 @@ public class ClientRead extends Thread {
 			try {
 				String line;
 				while ((line = in.readLine()) != null) {
-					//System.out.println(line);
 					// Si el mensaje es un comando
 					if (line.substring(0, 1).equals("%")) {
-						System.out.println(line);
 						String cmd = line.substring(1, 2);
-						System.out.println(cmd);
 						switch (cmd){
+							case "C":
+								final String fLine = line.replace("@@#", "\n");
+								ControllerFacade.getInstance().printPlayers(fLine.substring(2));
+								break;
+							case "L":
+								long result = System.currentTimeMillis() - Long.parseLong(line.substring(2));
+								System.out.println("Latencia: " + result + "ms");
+								break;
 							case "D":
 								Platform.runLater(() -> {
 									ControllerFacade.getInstance().getMatrix().died();
 								});
+								break;
 							case "K":
 								//TronClient.getInstance().stop();
 								//ControllerFacade.getInstance().kicked();

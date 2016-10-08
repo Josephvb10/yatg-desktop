@@ -11,7 +11,7 @@ public class ControllerFacade {
 	private static final ControllerFacade ourInstance = new ControllerFacade();
 
 	private Matrix matrixController;
-	private Dashboard dashboard;
+	private Dashboard dashboardController;
 
 	private ControllerFacade() {
 	}
@@ -21,11 +21,11 @@ public class ControllerFacade {
 	}
 
 	public Dashboard getDashboard() {
-		return dashboard;
+		return this.dashboardController;
 	}
 
 	public void setDashboard(Dashboard dashboardController) {
-		this.dashboard = dashboardController;
+		this.dashboardController = dashboardController;
 	}
 
 	public Matrix getMatrix() {
@@ -38,13 +38,19 @@ public class ControllerFacade {
 
 	public void kicked() {
 		Platform.runLater(() -> {
-			dashboard.kicked();
+			dashboardController.kicked();
 		});
 	}
 
 	public void serverDead() {
 		Platform.runLater(() -> {
-			dashboard.serverDead();
+			dashboardController.serverDead();
+		});
+	}
+
+	public void printPlayers(String substring) {
+		Platform.runLater(() -> {
+			dashboardController.printPlayers(substring);
 		});
 	}
 }
