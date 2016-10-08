@@ -10,8 +10,8 @@ import java.io.File;
  * Created by joseph on 10/8/16.
  */
 public class MusicPlayer {
+	static MediaPlayer actual;
 	private static MusicPlayer ourInstance = new MusicPlayer();
-	MediaPlayer actual;
 
 	private MusicPlayer() {
 	}
@@ -20,7 +20,7 @@ public class MusicPlayer {
 		return ourInstance;
 	}
 
-	public void play(String path) {
+	public static void play(String path) {
 		if (actual != null) {
 			actual.stop();
 			actual = null;

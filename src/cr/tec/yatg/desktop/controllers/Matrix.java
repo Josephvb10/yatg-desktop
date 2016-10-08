@@ -85,20 +85,22 @@ public class Matrix implements Initializable {
 		if (matrixData != null) {
 			Color g = Color.BLACK;
 			for (Item data : matrixData) {
+				Boolean drawStar = false;
 				if (data == null) {
 					g = Color.BLACK;
 				} else {
 					if (data.getType() == ItemType.tronTrail) {
 						if (data.getOwner() == JsonParser.getInstance().getPlayerData().getOwner()) {
+							drawStar = true;
 							if (JsonParser.getInstance().getPlayerData().isShieldActivated()) {
 								if (!star) {
-									MusicPlayer.getInstance().play("src/cr/tec/yatg/desktop/resources/music/starman.mp3");
+									MusicPlayer.play("src/cr/tec/yatg/desktop/resources/music/starman.mp3");
 									this.star = true;
 								}
 
 							} else {
 								if (star) {
-									MusicPlayer.getInstance().play("src/cr/tec/yatg/desktop/resources/music/title.mp3");
+									MusicPlayer.play("src/cr/tec/yatg/desktop/resources/music/title.mp3");
 									this.star = false;
 								}
 							}
@@ -127,7 +129,7 @@ public class Matrix implements Initializable {
 				}
 
 				drawSquare(g, data.getIndexI(), data.getIndexJ());
-				if (star) {
+				if (star && drawStar) {
 					drawHalfSquare(Color.BLUE, data.getIndexI(), data.getIndexJ());
 				}
 			}

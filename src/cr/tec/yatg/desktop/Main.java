@@ -14,12 +14,12 @@ public class Main extends Application {
 	}
 
 	public void start(Stage primaryStage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("resources/views/login.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("resources/views/splash.fxml"));
 		primaryStage.setTitle("YATG 1.0");
 		primaryStage.setScene(new Scene(root, 880, 680));
 		primaryStage.setResizable(false);
 		primaryStage.show();
-		MusicPlayer.getInstance().play("src/cr/tec/yatg/desktop/resources/music/title.mp3");
+		MusicPlayer.play("src/cr/tec/yatg/desktop/resources/music/title.mp3");
 
 
 	}
